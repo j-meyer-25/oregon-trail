@@ -20,18 +20,17 @@ public class Store {
      * Purchases an item of whatever quantity from a store, provided the right index
      * @param itemIndex the index of the items in the store that will be displayed, starting from 1
      * @param amount integer number of items to try and buy
-     * @param money reference variable to the amount of money you have
-     * @param inventory array list of items stored in the wagon, reference variable
+     * @param wagon current wagon for the game
      * @return true if purchase was successful, false if not enough money
      */
-    public boolean purchaseItems(int itemIndex, int amount, double money, ArrayList<Item> inventory) throws CloneNotSupportedException {
+    public boolean purchaseItems(int itemIndex, int amount, Wagon wagon) throws CloneNotSupportedException {
         Item itemToBuy = stock.get(itemIndex - 1);
         double totalCost = amount * itemToBuy.getPrice();
-        if (totalCost <= money) {
+        if (totalCost <= wagon.getMoney()) {
             for (int i = 1; i <= amount; i++) {
                 Item newItem = (Item) itemToBuy.clone();
-                inventory.add(newItem);
-                money -= totalCost;
+                wagon.addItem(newItem);
+                wagon.setMoney(wagon.getMoney() - totalCost);
             }
         } else {
             return false;
