@@ -17,7 +17,7 @@ public class Store {
     public ArrayList<Item> getStock() { return stock; }
 
     /**
-     * Purchases an item of whatever quantity from a store, provided the right index.
+     * Purchases an item of whatever quantity from a store, provided the right index
      * @param itemIndex the index of the items in the store that will be displayed, starting from 1
      * @param amount integer number of items to try and buy
      * @param money reference variable to the amount of money you have

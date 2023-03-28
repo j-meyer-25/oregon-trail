@@ -6,6 +6,7 @@ public class Item implements Cloneable {
     private double price;
     private String name;
 
+    // Constructor
     public Item(double thisPrice, String thisName) {
         setPrice(thisPrice);
         setName(thisName);
