@@ -1,20 +1,26 @@
-package com.example.mp2;
-import java.sql.Array;
+package com.oregonTrail.mp2.projectClasses;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Store {
+    private String storeName;
     private ArrayList<Item> stock = new ArrayList<Item>();
     //private String location;
 
     // Constructor
-    public Store(Item... items) { this.stock.addAll(Arrays.asList(items)); }
+    public Store(String storeName, Item... items) {
+        setStoreName(storeName);
+        this.stock.addAll(Arrays.asList(items));
+    }
 
     /**
      * Fetches the store stock
      * @return array list of Items the store sells
      */
     public ArrayList<Item> getStock() { return stock; }
+    public String getStoreName() { return this.storeName; }
+    public void setStoreName(String storeName) { this.storeName = storeName; }
 
     /**
      * Purchases an item of whatever quantity from a store, provided the right index
@@ -27,11 +33,10 @@ public class Store {
         Item itemToBuy = stock.get(itemIndex - 1);
         double totalCost = amount * itemToBuy.getPrice();
         if (totalCost <= wagon.getMoney()) {
-            for (int i = 1; i <= amount; i++) {
-                Item newItem = (Item) itemToBuy.clone();
-                wagon.addItem(newItem);
-                wagon.setMoney(wagon.getMoney() - totalCost);
-            }
+            Item newItem = (Item) itemToBuy.clone();
+            newItem.setQuantity(amount);
+            wagon.addItem(newItem);
+            wagon.setMoney(wagon.getMoney() - totalCost);
         } else {
             return false;
         }

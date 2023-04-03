@@ -1,4 +1,4 @@
-package com.example.mp2;
+package com.oregonTrail.mp2.projectClasses;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,6 @@ public class Wagon {
 
     // Constructors
     public Wagon(double starterCash) { this.money = starterCash; }
-    public Wagon() { this.money = 0; }
 
     // Getters
     public double getMoney() { return this.money; }
@@ -26,7 +25,8 @@ public class Wagon {
 
     public int driveForward() {
         int milesForward = 0;
-        // TODO figure out how this should be calculated
+        milesForward += Math.floor(2*(this.getPace() - 1) + 20); // Custom pace formula
+        // TODO have more things like weather impact the milesForward
         return milesForward;
     }
 }

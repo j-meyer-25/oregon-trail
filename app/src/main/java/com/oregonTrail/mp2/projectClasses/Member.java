@@ -1,4 +1,4 @@
-package com.example.mvpclasses;
+package com.oregonTrail.mp2.projectClasses;
 
 import java.util.Random;
 
@@ -6,8 +6,8 @@ import java.util.Random;
 public class Member {
 
     /** Instance Variables for age, health, name, and diseases they may get */
-    private int age = 0;
-    private String name = "";
+    private int age = 25;
+    private String name = "Jane Doe";
     private int health = 100;
     private boolean hasMeasles = false;
     private boolean hasDysentery = false;
@@ -51,10 +51,7 @@ public class Member {
     public boolean removeHealth(int amount){
         int currentHealth = getHealth();
         setHealth(currentHealth-amount);
-        if(getHealth() > 0){
-            return true;
-        }
-        else{ return false; }
+        return getHealth() > 0;
     }
 
     /**
@@ -64,7 +61,7 @@ public class Member {
     public boolean getsBetter(){
         Random rand = new Random();
         int randNum = rand.nextInt(101);
-        if(randNum <= 10){
+        if (randNum <= 10) {
             setHasCholera(false);
             setHasDysentery(false);
             setHasMeasles(false);
