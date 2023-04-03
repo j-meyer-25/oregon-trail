@@ -12,6 +12,7 @@ public class Map {
     private int milesUntilNextLandmark = 0;
     private int currentDay = 0;
     private boolean atLandmark = true;
+    private boolean reachedEndgameFlag = false;
 
     // https://www.died-of-dysentery.com/stories
     private static final String[] landmarks = {
@@ -37,6 +38,7 @@ public class Map {
     public int getMilesUntilNextLandmark() {return this.milesUntilNextLandmark;}
     public int getDay() {return this.currentDay;}
     public boolean isAtLandmark() {return this.atLandmark;}
+    public boolean isGameWon() {return this.reachedEndgameFlag;}
     public int getTrailPointEnd() {
         int max = 0;
         for (int num : landmarkDistances) { max += num; }
@@ -61,6 +63,12 @@ public class Map {
             this.atLandmark = true;
             this.currentLandmark++;
             Log.d("myTag", "CURRENT LAND MAARK:  " + this.currentLandmark);
+
+            if (getCurrentLandmark() == landmarkDistances.length - 1) {
+                this.reachedEndgameFlag = true;
+                return;
+            }
+
             setMilesUntilNextLandmark( landmarkDistances[getCurrentLandmark() + 1] );
             setMilesTraveled(getMilesTraveled() + (miles - milesToNextMark));
         } else { // Did not arrive at landmark

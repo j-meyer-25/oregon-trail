@@ -208,7 +208,9 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
 
-            public void onClick(View view) { runDay(); }
+            public void onClick(View view) {
+                if (!map.isGameWon()) { runDay(); }
+            }
         });
     }
 

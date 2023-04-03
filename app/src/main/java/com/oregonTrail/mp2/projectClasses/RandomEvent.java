@@ -56,10 +56,10 @@ public class RandomEvent {
         int probability = temp.nextInt(1000) + 1;
 
         // If hits 15% chance and its cold out, definition of cold may change if you would like
-        if(probability <= 150 && temperature <= 30){
+        if (probability <= 150 && temperature <= 30) {
             return true;
         }
-        else{ return false; }
+        else { return false; }
     }
 
     /**
