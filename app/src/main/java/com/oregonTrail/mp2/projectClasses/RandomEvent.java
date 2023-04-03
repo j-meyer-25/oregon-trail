@@ -182,4 +182,98 @@ public class RandomEvent {
         else { return false; }
     }
 
+    public ArrayList<String> dailyEvents(Member[] party, boolean injuredOx) {
+        ArrayList<String> eventsHit = new ArrayList<String>();
+
+        // Be aware: events listed at the top are statistically more likely to run
+        // due to having placement priority.
+        if(severeBlizzard()) {
+            if (eventsHit.size() < 3) {
+
+                //travel half the distance that day, not implemented yet
+                //also take away food for days missed
+
+                eventsHit.add("Severe Blizzard");
+            }
+        }
+        if(severeThunderstorm()) {
+            if (eventsHit.size() < 3) {
+
+                //travel half the distance that day, not implemented yet
+                //also take away food for days missed
+
+                eventsHit.add("Severe Thunderstorm");
+            }
+        }
+        if(injuredOx()) {
+            if (eventsHit.size() < 3) {
+                if (injuredOx) {
+                    eventsHit.add("Dead Ox");
+                } else {
+                    eventsHit.add("Injured Ox");
+                }
+            }
+        }
+        //If this hits it will take 10 health from the player it hits on
+        if(injuredPartyMember()) {
+            if (eventsHit.size() < 3) {
+                Random temp = new Random();
+                int partyMemberInjured = temp.nextInt(party.length);
+                String member = party[partyMemberInjured].getName();
+                party[partyMemberInjured].removeHealth(10);
+                String n =  member + " was injured";
+                eventsHit.add(n);
+            }
+        }
+        if(loseTrail()) {
+            if (eventsHit.size() < 3) {
+
+                // add something about gaining 1 day time
+
+                eventsHit.add("Lose Trail");
+            }
+        }
+        //If this hits it will take 10 health from the player it hits on & give random disease
+        if(illness()) {
+            if (eventsHit.size() < 3) {
+                Random temp = new Random();
+                int partyMemberSick = temp.nextInt(party.length);
+                String member = party[partyMemberSick].getName();
+                party[partyMemberSick].removeHealth(10);
+                String n =  member + " has gotten dysentery";
+                eventsHit.add(n);
+            }
+        }
+        if(thiefRaid()){
+            if (eventsHit.size() < 3) {
+
+                //put something about taking away a small amount of food
+                //leaving it to you since i have not initialized any item objects
+
+                eventsHit.add("Thief raids your wagon");
+            }
+        }
+        if(findWagon()){
+            if (eventsHit.size() < 3) {
+
+                //put something about gaining a small amount of food
+                // leaving it to you since i have not initialized any item objects
+
+                eventsHit.add("You find an abandoned wagon");
+            }
+        }
+        if(losePartyMember()){
+            if (eventsHit.size() < 3) {
+
+                // Lose 3 days time, not implemented yet
+
+                eventsHit.add("Hattie gets lost");
+            }
+        }
+        if(eventsHit.size() == 0){
+            eventsHit.add("No events today");
+        }
+        return eventsHit;
+    }
+
 }

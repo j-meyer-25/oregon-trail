@@ -74,8 +74,8 @@ public class Map {
         if (milesToNextMark <= miles) {
             this.atLandmark = true;
             this.currentLandmark++;
-            Log.d("myTag", "CURRENT LAND MAARK:  " + this.currentLandmark);
 
+            // Win condition
             if (getCurrentLandmark() == landmarkDistances.length - 1) {
                 this.reachedEndgameFlag = true;
                 return;

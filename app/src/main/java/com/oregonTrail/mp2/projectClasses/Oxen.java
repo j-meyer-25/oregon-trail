@@ -1,12 +1,20 @@
 package com.oregonTrail.mp2.projectClasses;
 
 public class Oxen extends Item {
-    private int health = 100;
+    private boolean injured = false;
 
     public Oxen(double thisPrice, String thisName, String units, int quantity) {
         super(thisPrice, thisName, units, quantity);
     }
 
-    public int getHealth() { return this.health; }
-    public void setHealth(int health) { this.health = health; }
+    public boolean isInjured() { return this.injured; }
+
+    public void injureOxen () {
+        if (!this.injured) { injured = true; }
+        else {
+            incrementQuantity(-1);
+            this.injured = false;
+        }
+    }
+
 }

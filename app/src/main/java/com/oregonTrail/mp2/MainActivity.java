@@ -18,103 +18,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-
-    ArrayList<String> dailyEvents(Member[] party, boolean injuredOx) {
-        RandomEvent event = new RandomEvent();
-        ArrayList<String> eventsHit = new ArrayList<String>();
-
-        // Be aware: events listed at the top are statistically more likely to run
-        // due to having placement priority.
-        if(event.severeBlizzard()) {
-            if (eventsHit.size() < 3) {
-
-                //travel half the distance that day, not implemented yet
-                //also take away food for days missed
-
-                eventsHit.add("Severe Blizzard");
-            }
-        }
-        if(event.severeThunderstorm()) {
-            if (eventsHit.size() < 3) {
-
-                //travel half the distance that day, not implemented yet
-                //also take away food for days missed
-
-                eventsHit.add("Severe Thunderstorm");
-            }
-        }
-        if(event.injuredOx()) {
-            if (eventsHit.size() < 3) {
-                if (injuredOx) {
-                    eventsHit.add("Dead Ox");
-                } else {
-                    eventsHit.add("Injured Ox");
-                }
-            }
-        }
-        //If this hits it will take 10 health from the player it hits on
-        if(event.injuredPartyMember()) {
-            if (eventsHit.size() < 3) {
-                Random temp = new Random();
-                int partyMemberInjured = temp.nextInt(party.length);
-                String member = party[partyMemberInjured].getName();
-                party[partyMemberInjured].removeHealth(10);
-                String n =  member + " was injured";
-                eventsHit.add(n);
-            }
-        }
-        if(event.loseTrail()) {
-            if (eventsHit.size() < 3) {
-
-                // add something about gaining 1 day time
-
-                eventsHit.add("Lose Trail");
-            }
-        }
-        //If this hits it will take 10 health from the player it hits on & give random disease
-        if(event.illness()) {
-            if (eventsHit.size() < 3) {
-                Random temp = new Random();
-                int partyMemberSick = temp.nextInt(party.length);
-                String member = party[partyMemberSick].getName();
-                party[partyMemberSick].removeHealth(10);
-                String n =  member + " has gotten dysentery";
-                eventsHit.add(n);
-            }
-        }
-        if(event.thiefRaid()){
-            if (eventsHit.size() < 3) {
-
-                //put something about taking away a small amount of food
-                //leaving it to you since i have not initialized any item objects
-
-                eventsHit.add("Thief raids your wagon");
-            }
-        }
-        if(event.findWagon()){
-            if (eventsHit.size() < 3) {
-
-                //put something about gaining a small amount of food
-                // leaving it to you since i have not initialized any item objects
-
-                eventsHit.add("You find an abandoned wagon");
-            }
-        }
-        if(event.losePartyMember()){
-            if (eventsHit.size() < 3) {
-
-                // Lose 3 days time, not implemented yet
-
-                eventsHit.add("Hattie gets lost");
-            }
-        }
-        if(eventsHit.size() == 0){
-            eventsHit.add("No events today");
-        }
-        return eventsHit;
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
         Member member3 = new Member(40, "Augusta Campbell");
         Member member4 = new Member(7, "Ben Campbell");
         Member member5 = new Member(10, "Jake Campbell");
-
-        // Set to true if an ox is injured so we know if one should die when injured ox is hit
-        boolean injuredOx = false;
 
         Member[] party = {member1, member2, member3, member4, member5};
         Map map = new Map();
@@ -172,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     // Run random events
-                    ArrayList<String> messages = dailyEvents(party, injuredOx);
+                    RandomEvent randomizer = new RandomEvent();
+                    ArrayList<String> messages = randomizer.dailyEvents(party,  wagon.getOxen().isInjured());
                     StringBuilder message = new StringBuilder();
                     for (String msg : messages) {
                         message.append(msg).append("\n");
@@ -194,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     map.resetMap();
                     wagon.setDefaultInventory();
-                    for (Member person : party) { person.setHealth(100); }
                 }
             }
         });
