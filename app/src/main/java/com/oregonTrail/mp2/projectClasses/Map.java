@@ -30,27 +30,39 @@ public class Map {
     }
 
     /** Getters & Setters */
-    public int getMilesTraveled() {return milesTraveled;}
-    public int getCurrentZone() {return currentZone;}
-    public int getCurrentLandmark() {return this.currentLandmark;}
-    //public int getNextLandmark() {return landmarkDistances[this.currentLandmark + 1];}
+    public int getMilesTraveled() { return milesTraveled; }
+    public int getCurrentZone() { return currentZone; }
+    public int getCurrentLandmark() { return this.currentLandmark; }
+    //public int getNextLandmark() { return landmarkDistances[this.currentLandmark + 1]; }
     /** Returns distance from wagon to the next landmark. */
-    public int getMilesUntilNextLandmark() {return this.milesUntilNextLandmark;}
-    public int getDay() {return this.currentDay;}
-    public boolean isAtLandmark() {return this.atLandmark;}
-    public boolean isGameWon() {return this.reachedEndgameFlag;}
+    public int getMilesUntilNextLandmark() { return this.milesUntilNextLandmark; }
+    public int getDay() { return this.currentDay; }
+    public boolean isAtLandmark() { return this.atLandmark; }
+    public boolean isGameWon() { return this.reachedEndgameFlag; }
     public int getTrailPointEnd() {
         int max = 0;
         for (int num : landmarkDistances) { max += num; }
         return max;
     }
 
-    public void setMilesTraveled(int milesTraveled) {this.milesTraveled = milesTraveled;}
-    public void setCurrentLandmark(int landmarkIndex) {this.currentLandmark = landmarkIndex;}
-    public void incrementDay() {this.currentDay++;} // only ever need to increment
-    public void setMilesUntilNextLandmark(int miles) {this.milesUntilNextLandmark = miles;}
+    public void setMilesTraveled(int milesTraveled) { this.milesTraveled = milesTraveled; }
+    public void setCurrentLandmark(int landmarkIndex) { this.currentLandmark = landmarkIndex; }
+    public void setDay(int day) { this.currentDay = day; }
+    public void incrementDay() { this.currentDay++; } // only ever need to increment
+    public void setMilesUntilNextLandmark(int miles) { this.milesUntilNextLandmark = miles; }
 
-    public String getLandmarkName(int landmark) {return landmarks[landmark].split("/")[1];}
+    public String getLandmarkName(int landmark) { return landmarks[landmark].split("/")[1]; }
+
+
+    /** Sets all map stats to defaults allowing the game to run from the beginning. */
+    public void resetMap() {
+        setMilesTraveled(0);
+        setMilesUntilNextLandmark(0);
+        setCurrentLandmark(0);
+        setDay(0);
+        this.atLandmark = true;
+        this.reachedEndgameFlag = false;
+    }
 
     /**
      * Updates your position given some miles, and keeps tack of landmark progress.

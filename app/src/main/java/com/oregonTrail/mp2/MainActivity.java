@@ -132,27 +132,7 @@ public class MainActivity extends AppCompatActivity {
         Member[] party = {member1, member2, member3, member4, member5};
         Map map = new Map();
         Wagon wagon = new Wagon(800);
-
-        // This is the temporary inventory for the MVP
-        // TODO setup store and store's UX, remove temp inventory
-        wagon.addItem(new Item(0.17, "Food", "Pounds", 2000));
-        wagon.addItem(new Item(2, "Clothing", "Sets", 8));
-        wagon.addItem(new Item(20, "Shotgun", "", 1));
-        wagon.addItem(new Item(10, "Rifle", "", 1));
-        wagon.addItem(new Item(5, "Shots", "", 500));
-        wagon.addItem(new Oxen(50, "Oxen", "", 6));
-        wagon.addItem(new Item(8, "Spare Wagon Wheel", "", 3));
-        wagon.addItem(new Item(3, "Spare Wagon Axel", "", 3));
-        wagon.addItem(new Item(3, "Spare Wagon Tongue", "", 3));
-        wagon.addItem(new Item(1.50, "Medical Supply Box", "", 1));
-        wagon.addItem(new Item(0.50, "Sewing Kit", "", 1));
-        wagon.addItem(new Item(0.25, "Fire Starting Kit", "", 1));
-        wagon.addItem(new Item(8, "Spare Wagon Wheel", "", 3));
-        wagon.addItem(new Item(0.05, "Kid's Toys", "", 3));
-        wagon.addItem(new Item(0, "Keepsakes", "Trunk", 1));
-        wagon.addItem(new Item(0.01, "Seed packages", "", 10));
-        wagon.addItem(new Item(2.50, "Shovel", "", 5));
-        wagon.addItem(new Item(2.75, "Spare Wagon Wheel", "Trunk", 1));
+        wagon.setDefaultInventory();
 
         // Init the gui elements
         TextView dateBox = (TextView) findViewById(R.id.DateBox);
@@ -209,7 +189,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
-                if (!map.isGameWon()) { runDay(); }
+                if (!map.isGameWon()) {
+                    runDay();
+                } else {
+                    map.resetMap();
+                    wagon.setDefaultInventory();
+                    for (Member person : party) { person.setHealth(100); }
+                }
             }
         });
     }
