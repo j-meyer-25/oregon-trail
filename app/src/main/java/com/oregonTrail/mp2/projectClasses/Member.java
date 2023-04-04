@@ -85,6 +85,7 @@ public class Member {
      */
     public void naturalHealing(){
         Random temp = new Random();
+        // Random healing value from 3-5
         int healing = temp.nextInt(3)+3;
         this.health = this.health + healing;
     }
