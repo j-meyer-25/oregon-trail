@@ -24,6 +24,10 @@ public class Wagon {
 
     public void addItem(Item toAdd) { inventory.add(toAdd); }
 
+    /** Based on various factors, especially Pace, this determines how far
+     * the wagon should move in a day.
+     * @return how many miles driven in the current day
+     */
     public int driveForward() {
         int milesForward = 0;
         milesForward += Math.floor(2.3*(this.getPace() - 1) + 22); // Custom pace formula
@@ -31,6 +35,7 @@ public class Wagon {
         return milesForward;
     }
 
+    /** Removes all items in the wagon's inventory. */
     public void clearInventory() { this.inventory.clear(); }
 
     /** This is the temporary inventory for the MVP */

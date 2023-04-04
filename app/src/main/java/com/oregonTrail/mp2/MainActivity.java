@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Init the party members & wagon
         Member member1 = new Member(13, "Hattie Campbell");
         Member member2 = new Member(42, "Charles Campbell");
         Member member3 = new Member(40, "Augusta Campbell");
         Member member4 = new Member(7, "Ben Campbell");
         Member member5 = new Member(10, "Jake Campbell");
-
         Member[] party = {member1, member2, member3, member4, member5};
         Map map = new Map();
         Wagon wagon = new Wagon(800);
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 milesBox.setText(milesMessage);
             }
 
+            /** Runs through exactly one day, activating random events & depleting resources */
             public void runDay() {
                 if (map.getMilesTraveled() < map.getTrailPointEnd()) {
                     dialogueBox.setText("");

@@ -3,7 +3,7 @@ package com.oregonTrail.mp2.projectClasses;
 import android.util.Log;
 
 public class Map {
-    /**
+    /*
      * Instance Variables
      */
     private int milesTraveled = 0;
@@ -29,12 +29,11 @@ public class Map {
         this.milesUntilNextLandmark = landmarkDistances[currentLandmark + 1];
     }
 
-    /** Getters & Setters */
+    /* Getters & Setters */
     public int getMilesTraveled() { return milesTraveled; }
     public int getCurrentZone() { return currentZone; }
     public int getCurrentLandmark() { return this.currentLandmark; }
     //public int getNextLandmark() { return landmarkDistances[this.currentLandmark + 1]; }
-    /** Returns distance from wagon to the next landmark. */
     public int getMilesUntilNextLandmark() { return this.milesUntilNextLandmark; }
     public int getDay() { return this.currentDay; }
     public boolean isAtLandmark() { return this.atLandmark; }
@@ -50,7 +49,6 @@ public class Map {
     public void setDay(int day) { this.currentDay = day; }
     public void incrementDay() { this.currentDay++; } // only ever need to increment
     public void setMilesUntilNextLandmark(int miles) { this.milesUntilNextLandmark = miles; }
-
     public String getLandmarkName(int landmark) { return landmarks[landmark].split("/")[1]; }
 
 

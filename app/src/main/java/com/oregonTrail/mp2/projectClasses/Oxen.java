@@ -7,8 +7,10 @@ public class Oxen extends Item {
         super(thisPrice, thisName, units, quantity);
     }
 
+    /** Tells whether an oxen in the group is injured or not. */
     public boolean isInjured() { return this.injured; }
 
+    /** Injure an oxen in the group, or kill an already injured oxen. */
     public void injureOxen () {
         if (!this.injured) { injured = true; }
         else {
