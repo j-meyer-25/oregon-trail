@@ -2,22 +2,24 @@ package com.oregonTrail.mp2.projectClasses;
 
 import java.util.ArrayList;
 
+/** This class holds the inventory of the party, money remaining, and oxen remaining */
 public class Wagon {
+    /** Instance Variables */
     private double money;
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private Oxen oxen = new Oxen(50, "Oxen", "", 6);
     private int pace = 1; // 1-4
 
-    // Constructors
+    /** Constructor */
     public Wagon(double starterCash) { this.money = starterCash; }
 
-    // Getters
+    /** Getters */
     public double getMoney() { return this.money; }
     public ArrayList<Item> getInventory() { return this.inventory; }
     public Oxen getOxen() { return this.oxen; }
     public int getPace() { return this.pace; }
 
-    // Setters
+    /** Setters */
     public void setMoney(double money) { this.money = money; }
     public void setInventory(ArrayList<Item> inventory) { this.inventory = inventory; }
     public void setPace(int pace) { this.pace = pace; }

@@ -2,13 +2,16 @@ package com.oregonTrail.mp2.projectClasses;
 
 import androidx.annotation.NonNull;
 
+/** Class which holds the information regarding items in the game */
 public class Item implements Cloneable {
+
+    /** Instance Variables */
     private double price;
     private String name;
     private String unit;
     private int quantity;
 
-    // Constructor
+    /** Constructor */
     public Item(double thisPrice, String thisName, String units, int quantity) {
         setPrice(thisPrice);
         setName(thisName);
@@ -16,6 +19,7 @@ public class Item implements Cloneable {
         setQuantity(quantity);
     }
 
+    /** Getters and Setters */
     public double getPrice() { return this.price; }
     public String toString() { return this.name + this.unit; }
     public int getQuantity() { return this.quantity; }

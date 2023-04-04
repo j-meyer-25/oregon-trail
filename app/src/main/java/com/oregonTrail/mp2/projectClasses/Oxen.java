@@ -1,6 +1,9 @@
 package com.oregonTrail.mp2.projectClasses;
 
+/** Specialized class for holding if an ox is injured and running the method to hurt ox if random event hits */
 public class Oxen extends Item {
+
+    /** Instance Variables */
     private boolean injured = false;
 
     public Oxen(double thisPrice, String thisName, String units, int quantity) {
