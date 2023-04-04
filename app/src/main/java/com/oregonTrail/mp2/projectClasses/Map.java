@@ -15,10 +15,11 @@ public class Map {
 
     // https://www.died-of-dysentery.com/stories
     private static final String[] landmarks = {
-            "town/Independence, MS", "river/Kansas River", "river/Big Blue River", "town/Fort Kearney, NE"
+            "town/Independence, MS", "river/Kansas River", "river/Big Blue River", "town/Fort Kearney, NE",
+            "sight/Chimney Rock",
     };
     // Distance to each landmark from the previous landmark
-    private static final int[] landmarkDistances = {0, 102, 65, 118}; // TODO make these accurate
+    private static final int[] landmarkDistances = {0, 102, 82, 118, 250}; // TODO make these accurate
 
     /** Constructor */
     public Map() {
@@ -46,7 +47,7 @@ public class Map {
     public void setMilesTraveled(int milesTraveled) { this.milesTraveled = milesTraveled; }
     public void setCurrentLandmark(int landmarkIndex) { this.currentLandmark = landmarkIndex; }
     public void setDay(int day) { this.currentDay = day; }
-    public void incrementDay() { this.currentDay++; } // only ever need to increment
+    public void incrementDay() { this.currentDay++; }
     public void setMilesUntilNextLandmark(int miles) { this.milesUntilNextLandmark = miles; }
     public String getLandmarkName(int landmark) { return landmarks[landmark].split("/")[1]; }
 
