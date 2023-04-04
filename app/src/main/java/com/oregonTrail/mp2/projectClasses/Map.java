@@ -2,10 +2,9 @@ package com.oregonTrail.mp2.projectClasses;
 
 import android.util.Log;
 
+/** Class for tracking progress along the trail and keeping the location of the wagon */
 public class Map {
-    /*
-     * Instance Variables
-     */
+    /** Instance Variables */
     private int milesTraveled = 0;
     private int currentZone = 0;
     private int currentLandmark = 0;
@@ -29,7 +28,7 @@ public class Map {
         this.milesUntilNextLandmark = landmarkDistances[currentLandmark + 1];
     }
 
-    /* Getters & Setters */
+    /** Getters & Setters */
     public int getMilesTraveled() { return milesTraveled; }
     public int getCurrentZone() { return currentZone; }
     public int getCurrentLandmark() { return this.currentLandmark; }

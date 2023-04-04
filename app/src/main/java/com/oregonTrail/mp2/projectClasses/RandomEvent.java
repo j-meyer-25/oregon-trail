@@ -3,6 +3,7 @@ package com.oregonTrail.mp2.projectClasses;
 import java.util.ArrayList;
 import java.util.Random;
 
+/** Class which will handle all random events in the game and methods which return the events each day */
 public class RandomEvent {
 
     /** Instance Variable */
@@ -26,29 +27,12 @@ public class RandomEvent {
     }
 
     /** Getters & Setters */
-    public int getTemperature() {
-        return temperature;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public int getZone() {
-        return zone;
-    }
-
-    public void setTemperature(int temperature) {
-        this.temperature = temperature;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public void setZone(int zone) {
-        this.zone = zone;
-    }
+    public int getTemperature() {return temperature;}
+    public int getMonth() {return month;}
+    public int getZone() {return zone;}
+    public void setTemperature(int temperature) {this.temperature = temperature;}
+    public void setMonth(int month) {this.month = month;}
+    public void setZone(int zone) {this.zone = zone;}
 
     /**
      * severeBlizzard - Method to determine if there is a blizzard that day

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /** This class holds the inventory of the party, money remaining, and oxen remaining */
 public class Wagon {
+    /** Instance Variables */
     private double money;
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private Oxen oxen = new Oxen(50, "Oxen", "", 6);

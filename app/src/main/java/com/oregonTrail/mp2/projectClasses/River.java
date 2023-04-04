@@ -1,6 +1,6 @@
 package com.oregonTrail.mp2.projectClasses;
 
-/** Handles storing information on the four rivers in the Oregon Trail Game*/
+/** Handles storing information on the four rivers in the Oregon Trail Game */
 public class River {
 
     /** Instance Variables */

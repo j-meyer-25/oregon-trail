@@ -3,12 +3,14 @@ package com.oregonTrail.mp2.projectClasses;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/** This class holds the stock that stores sell and the name of each store */
 public class Store {
+    /** Instance Variables */
     private String storeName;
     private ArrayList<Item> stock = new ArrayList<Item>();
     //private String location;
 
-    // Constructor
+    /** Constructor */
     public Store(String storeName, Item... items) {
         setStoreName(storeName);
         this.stock.addAll(Arrays.asList(items));
