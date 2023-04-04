@@ -1,3 +1,12 @@
+/**
+ * MainActivity.java
+ * 4 April, 2023
+ * Josh Meyer and Truman Godsey
+ * This program is made to run the Oregon Trail game as it would be if it followed Hattie Campbell
+ * instead of the male lead characters which is normal. The trail goes from Independence, Missouri
+ * to Nebraska.
+ */
+
 package com.oregonTrail.mp2;
 
 import androidx.appcompat.app.AppCompatActivity;
