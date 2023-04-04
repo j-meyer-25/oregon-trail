@@ -170,6 +170,24 @@ public class RandomEvent {
     }
 
     /**
+     * tryHunt - Tells if you are successful in your hunt or not
+     * @return - True if your hunt is successful, false if not
+     */
+    public boolean tryHunt(){
+        Random temp = new Random();
+        // Tells amount of bullets used on hunt from 5-15 bullets
+        int bulletsUsed = temp.nextInt(16) + 5;
+        int probability = temp.nextInt(1000) + 1;
+
+        if(probability <= 500){
+            int foodGained = 200;
+            // Add functionality to add food to inventory
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * dailyEvents - Method to run all random events that can happen in one day
      * @param party - Array list of members of the travelling party to be used for events
      * @param injuredOx - Checks if an ox is injures, if so, if the injured ox event is hit it will kill one ox
