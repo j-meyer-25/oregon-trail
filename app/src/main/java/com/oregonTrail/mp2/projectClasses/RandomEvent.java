@@ -10,12 +10,15 @@ public class RandomEvent {
     private int month = 1;
     private int zone = 1;
     private ArrayList<String> members = new ArrayList<String>();
+
+    /** Default Constructor */
     public RandomEvent(){
         this.temperature = 60;
         this.month = 1;
         this.zone = 1;
     }
 
+    /** Constructor */
     public RandomEvent(int temp, int month, int zone){
         this.temperature = temp;
         this.month = month;
@@ -182,6 +185,12 @@ public class RandomEvent {
         else { return false; }
     }
 
+    /**
+     * dailyEvents - Method to run all random events that can happen in one day
+     * @param party - Array list of members of the travelling party to be used for events
+     * @param injuredOx - Checks if an ox is injures, if so, if the injured ox event is hit it will kill one ox
+     * @return eventsHit - String ArrayList of all events which are hit in one day
+     */
     public ArrayList<String> dailyEvents(Member[] party, boolean injuredOx) {
         ArrayList<String> eventsHit = new ArrayList<String>();
 
