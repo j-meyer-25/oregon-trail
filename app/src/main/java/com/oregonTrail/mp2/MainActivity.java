@@ -1,4 +1,4 @@
-/*
+/**
  * MainActivity.java
  * 4 April, 2023
  * Josh Meyer and Truman Godsey

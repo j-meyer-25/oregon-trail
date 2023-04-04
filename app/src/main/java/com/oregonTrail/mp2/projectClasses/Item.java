@@ -1,3 +1,11 @@
+/**
+ * Item.java
+ * April 4, 2023
+ * Truman Godsey and Josh Meyer
+ * This class holds the information regarding items in the game. It handles holding the price of
+ * each item, the name, units, and the quantity that the player has.
+ */
+
 package com.oregonTrail.mp2.projectClasses;
 
 import androidx.annotation.NonNull;

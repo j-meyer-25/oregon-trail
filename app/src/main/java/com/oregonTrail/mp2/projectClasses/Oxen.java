@@ -1,3 +1,12 @@
+/**
+ * Oxen.java
+ * April 4, 2023
+ * Truman Godsey and Josh Meyer
+ * This class inherits from the Item class and is used to store information regarding Oxen you have
+ * on the trail. If an Ox gets hurt once they get injured, if they get hurt again they die. Necessary
+ * information regarding this process is held in this class.
+ */
+
 package com.oregonTrail.mp2.projectClasses;
 
 /** Specialized class for holding if an ox is injured and running the method to hurt ox if random event hits */

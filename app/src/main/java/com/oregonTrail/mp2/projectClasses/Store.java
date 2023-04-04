@@ -1,3 +1,11 @@
+/**
+ * Store.java
+ * April 4, 2023
+ * Truman Godsey and Josh Meyer
+ * This class holds the store name for each store in the game and holds the stock of the store.
+ * This was it can be easily recovered for display to the user.
+ */
+
 package com.oregonTrail.mp2.projectClasses;
 
 import java.util.ArrayList;
