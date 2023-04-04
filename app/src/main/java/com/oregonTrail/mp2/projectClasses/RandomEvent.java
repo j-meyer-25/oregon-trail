@@ -225,6 +225,7 @@ public class RandomEvent {
                 }
             }
         }
+
         //If this hits it will take 10 health from the player it hits on
         if(injuredPartyMember()) {
             if (eventsHit.size() < 3) {

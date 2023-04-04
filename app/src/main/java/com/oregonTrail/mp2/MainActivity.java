@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         TextView landmarkBox = (TextView) findViewById(R.id.LandmarkBox);
         TextView milesBox = (TextView) findViewById(R.id.MilesBox);
         TextView dialogueBox = (TextView) findViewById(R.id.dialogueBox);
+        TextView healthBox = (TextView) findViewById(R.id.healthBox);
 
         Button nextButton = (Button) findViewById(R.id.contButton);
 
@@ -62,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 landmarkBox.setText(landmarkMessage);
                 String milesMessage = "Miles traveled: " + map.getMilesTraveled();
                 milesBox.setText(milesMessage);
+                String healthBoxMessage = "Health\n";
+                for (Member memb : party) { healthBoxMessage += memb.getName().split(" ")[0] + ": " + memb.getHealth() + " HP\n"; }
+                healthBox.setText(healthBoxMessage);
             }
-
             /** Runs through exactly one day, activating random events & depleting resources */
             public void runDay() {
                 if (map.getMilesTraveled() < map.getTrailPointEnd()) {
@@ -103,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     map.resetMap();
                     wagon.setDefaultInventory();
+                    for (Member memb : party) { memb.setHealth(100); }
                 }
             }
         });
