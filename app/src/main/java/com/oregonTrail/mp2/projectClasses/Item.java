@@ -8,8 +8,6 @@
 
 package com.oregonTrail.mp2.projectClasses;
 
-import androidx.annotation.NonNull;
-
 /** Class which holds the information regarding items in the game */
 public class Item implements Cloneable {
 

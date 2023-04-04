@@ -8,8 +8,6 @@
 
 package com.oregonTrail.mp2.projectClasses;
 
-import android.util.Log;
-
 /** Class for tracking progress along the trail and keeping the location of the wagon */
 public class Map {
     /** Instance Variables */

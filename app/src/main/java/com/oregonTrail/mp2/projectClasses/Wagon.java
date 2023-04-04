@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Wagon {
     /** Instance Variables */
     private double money;
-    private ArrayList<Item> inventory = new ArrayList<Item>();
+    private ArrayList<Item> inventory = new ArrayList<>();
     private Oxen oxen = new Oxen(50, "Oxen", "", 6);
     private int pace = 1; // 1-4
 
