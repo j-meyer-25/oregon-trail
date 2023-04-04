@@ -88,5 +88,8 @@ public class Member {
         // Random healing value from 3-5
         int healing = temp.nextInt(3)+3;
         this.health = this.health + healing;
+        if(this.health > 100){
+            this.health = 100;
+        }
     }
 }
