@@ -86,6 +86,6 @@ public class Member {
     public void naturalHealing(){
         Random temp = new Random();
         int healing = temp.nextInt(3)+3;
-        this.health = this.health + healing;
+        this.health = Math.min(this.health + healing, 100);
     }
 }

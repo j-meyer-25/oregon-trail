@@ -77,9 +77,10 @@ public class MainActivity extends AppCompatActivity {
                     int milesGone = wagon.driveForward();
                     map.update(milesGone);
 
-                    // Eat some food!
+                    // Eat some food and heal
                     for (Member member : party) {
                         wagon.getInventory().get(0).incrementQuantity(-5);
+                        member.naturalHealing();
                     }
 
                     // Run random events
