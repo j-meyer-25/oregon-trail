@@ -7,15 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.oregonTrail.mp2.projectClasses.Item;
 import com.oregonTrail.mp2.projectClasses.Map;
 import com.oregonTrail.mp2.projectClasses.Member;
-import com.oregonTrail.mp2.projectClasses.Oxen;
 import com.oregonTrail.mp2.projectClasses.RandomEvent;
 import com.oregonTrail.mp2.projectClasses.Wagon;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -45,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Loop every day until we reach the end (or die, not implemented).
         nextButton.setOnClickListener(new View.OnClickListener() {
+            /** Updates the info buttons in the view */
             public void displayButtons() {
                 // Display results
                 String dayMessage = "Day: " + map.getDay();
@@ -76,9 +74,11 @@ public class MainActivity extends AppCompatActivity {
                     RandomEvent randomizer = new RandomEvent();
                     ArrayList<String> messages = randomizer.dailyEvents(party,  wagon.getOxen().isInjured());
                     StringBuilder message = new StringBuilder();
-                    for (String msg : messages) {
-                        message.append(msg).append("\n");
-                    }
+
+                    // Add newlines for different text events
+                    for (String msg : messages) { message.append(msg).append("\n"); }
+
+                    // Indicate reaching a landmark
                     if (map.isAtLandmark()) {
                         String appendedMessage = "Currently at " + map.getLandmarkName(map.getCurrentLandmark());
                         message.append(appendedMessage);
@@ -89,11 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             @Override
-
             public void onClick(View view) {
-                if (!map.isGameWon()) {
-                    runDay();
-                } else {
+                if (!map.isGameWon()) { runDay(); }
+                else {
                     map.resetMap();
                     wagon.setDefaultInventory();
                 }

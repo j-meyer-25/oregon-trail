@@ -22,6 +22,9 @@ public class Wagon {
     public void setInventory(ArrayList<Item> inventory) { this.inventory = inventory; }
     public void setPace(int pace) { this.pace = pace; }
 
+    /** Adds an Item object to the wagon's inventory arraylist
+     * @param toAdd the item to add to the inventory
+     */
     public void addItem(Item toAdd) { inventory.add(toAdd); }
 
     /** Based on various factors, especially Pace, this determines how far
