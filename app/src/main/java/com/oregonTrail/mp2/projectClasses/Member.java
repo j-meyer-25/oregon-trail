@@ -1,8 +1,15 @@
+/**
+ * Member.java
+ * April 4, 2023
+ * Truman Godsey and Josh Meyer
+ * This class holds information on each member of the travelling party in this game of Oregon Trail.
+ * It stores the health, age, name, and disease status of each character.
+ */
+
 package com.oregonTrail.mp2.projectClasses;
 
 import java.util.Random;
 
-/** This class holds information regarding health, name, and age of each member for the Oregon Trail game */
 public class Member {
 
     /** Instance Variables for age, health, name, and diseases they may get */

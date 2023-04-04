@@ -1,3 +1,11 @@
+/**
+ * River.java
+ * April 4, 2023
+ * Truman Godsey
+ * This class is made to store information regarding each river in the game, it holds the depth
+ * speed and width of the river.
+ */
+
 package com.oregonTrail.mp2.projectClasses;
 
 /** Handles storing information on the four rivers in the Oregon Trail Game */
