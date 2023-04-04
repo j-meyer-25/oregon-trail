@@ -1,3 +1,11 @@
+/**
+ * Map.java
+ * April 4, 2023
+ * Truman Godsey and Josh Meyer
+ * This class is used for tracking the wagons process along the trail as well as all of the
+ * locations that the wagon goes to and how far the wagon is from the next landmark.
+ */
+
 package com.oregonTrail.mp2.projectClasses;
 
 /** Class for tracking progress along the trail and keeping the location of the wagon */

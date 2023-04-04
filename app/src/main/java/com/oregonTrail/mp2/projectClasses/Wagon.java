@@ -1,3 +1,12 @@
+/**
+ * Wagon.java
+ * April 4, 2023
+ * Truman Godsey and Josh Meyer
+ * This class functions as an inventory for all of the supplies brought on the trail. It also
+ * includes the amount of money remaining, ox remaining, and methods for determining travel
+ * for the day.
+ */
+
 package com.oregonTrail.mp2.projectClasses;
 
 import java.util.ArrayList;

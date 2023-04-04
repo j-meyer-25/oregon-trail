@@ -1,9 +1,15 @@
+/**
+ * RandomEvent.java
+ * April 4, 2023
+ * Truman Godsey and Josh Meyer
+ * This class is made to handle all random events which could occur in the game and holds methods
+ * which tell what events hit each day.
+ */
 package com.oregonTrail.mp2.projectClasses;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-/** Class which will handle all random events in the game and methods which return the events each day */
 public class RandomEvent {
 
     /** Instance Variable */
