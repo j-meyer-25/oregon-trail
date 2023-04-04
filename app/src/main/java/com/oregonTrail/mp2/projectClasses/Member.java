@@ -79,4 +79,13 @@ public class Member {
         }
         else { return false; }
     }
+
+    /**
+     * naturalHealing - Gives 3-5 health back each day to every player as a natural healing process
+     */
+    public void naturalHealing(){
+        Random temp = new Random();
+        int healing = temp.nextInt(3)+3;
+        this.health = this.health + healing;
+    }
 }
