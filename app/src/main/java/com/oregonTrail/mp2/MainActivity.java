@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             /** Updates the info buttons in the view */
             public void displayButtons() {
                 // Display results
-                String dayMessage = "Day: " + map.getDay();
+                String dayMessage = "Day: " + map.updateDate();
                 dateBox.setText(dayMessage);
                 String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
                 foodBox.setText(foodMessage);
