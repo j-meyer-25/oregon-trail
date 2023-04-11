@@ -19,7 +19,7 @@ public class Map {
     private boolean atLandmark = true;
     private boolean reachedEndgameFlag = false;
     private String month = "";
-    private int dayOfMonth = 0;
+    private int dayOfMonth = 1;
     private int startOfMonth = 0;
     private int year = 1847;
     private String date = "";
@@ -38,7 +38,7 @@ public class Map {
         this.currentZone = 1;
         this.currentLandmark = 0;
         this.milesUntilNextLandmark = landmarkDistances[currentLandmark + 1];
-        this.currentDay = 102;
+        this.currentDay = 103;
         this.dayOfMonth = 12;
         this.month = "April";
         this.year = 1847;
@@ -47,7 +47,8 @@ public class Map {
 
     /** Getters & Setters */
     public String updateDate(){
-        this.dayOfMonth = currentDay - startOfMonth;
+        // Adds one to compensate for the error of starting and being on the same day so displays 0
+        this.dayOfMonth = (currentDay+1) - startOfMonth;
         this.date = dayOfMonth + " " + month + ", " + year;
         return this.date;
     }
@@ -133,7 +134,7 @@ public class Map {
         setMilesTraveled(0);
         setMilesUntilNextLandmark(0);
         setCurrentLandmark(0);
-        setDay(0);
+        setDay(102);
         this.atLandmark = true;
         this.reachedEndgameFlag = false;
     }
