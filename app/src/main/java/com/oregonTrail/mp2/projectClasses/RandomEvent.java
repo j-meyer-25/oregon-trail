@@ -33,25 +33,33 @@ public class RandomEvent {
     }
 
     /** Getters & Setters */
-    public int getTemperature() {return temperature;}
-    public int getMonth() {return month;}
-    public int getZone() {return zone;}
-    public void setTemperature(int temperature) {this.temperature = temperature;}
-    public void setMonth(int month) {this.month = month;}
-    public void setZone(int zone) {this.zone = zone;}
+    public int getTemperature() { return temperature; }
+    public int getMonth() { return month; }
+    public int getZone() { return zone; }
+    public void setTemperature(int temperature) { this.temperature = temperature; }
+    public void setMonth(int month) { this.month = month; }
+    public void setZone(int zone) { this.zone = zone; }
+
+    /**
+     * Runs a dice roll with a given probability
+     * @param threshold - int between 0 and 1000
+     * @return true if random number is within 0 and threshold
+     */
+    public boolean runProbability(int threshold) {
+        Random temp = new Random();
+        int probability = temp.nextInt(1000) + 1;
+        if (probability <= threshold) { return true; }
+        return false;
+    }
 
     /**
      * severeBlizzard - Method to determine if there is a blizzard that day
      * @return true if 15% chance hits & its cold out, false otherwise
      */
-    public boolean severeBlizzard(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000) + 1;
-
+    public boolean severeBlizzard() {
+        boolean hit = runProbability(150);
         // If hits 15% chance and its cold out, definition of cold may change if you would like
-        if (probability <= 150 && temperature <= 30) {
-            return true;
-        }
+        if (hit && temperature <= 30) { return true; }
         else { return false; }
     }
 
@@ -59,119 +67,10 @@ public class RandomEvent {
      * severeThunderstorm - Method to determine if there is a blizzard that day
      * @return true if 15% chance hits & its warm out, false otherwise
      */
-    public boolean severeThunderstorm(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000) + 1;
-
+    public boolean severeThunderstorm() {
+        boolean hit = runProbability(150);
         // If hits 15% chance and its warm out, definition of warm may change if you would like
-        if(probability <= 150 && temperature >= 50){
-            return true;
-        }
-        else{ return false; }
-    }
-
-    /**
-     * injuredOx - method to determine if an ox gets injured or killed that day on the trail
-     * @return True if it hits 2.5% chance, false otherwise
-     */
-    public boolean injuredOx(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000)+1;
-
-        // 2.5% chance it is true
-        if(probability <= 25){
-            return true;
-        }
-        else { return false; }
-    }
-
-    /**
-     * injuredPartMember - 2.5% chance a part member is injured that day on the trail
-     * @return true if 2.5% hits, false otherwise
-     */
-    public boolean injuredPartyMember(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000)+1;
-
-        // 2.5% chance it hits
-        if(probability <= 25){
-            return true;
-        }
-        else { return false; }
-    }
-
-    /**
-     * loseTrail - 5% chance each day that party will lose the trail
-     * @return true if chance hits, false otherwise
-     */
-    public boolean loseTrail(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000)+1;
-
-        // 5% chance it hits
-        if(probability <= 50){
-            return true;
-        }
-        else { return false; }
-    }
-
-    /**
-     * illness - 10% chance every day that someone gets ill on the trip
-     * @return true if 10% chance hits, false otherwise
-     */
-    public boolean illness(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000)+1;
-
-        // 10% chance it hits
-        if(probability <= 100){
-            return true;
-        }
-        else { return false; }
-    }
-
-    /**
-     * thiefRaid - method to see if a theif comes and takes things from your wagon
-     * @return 2.0% chance to return true, false otherwise
-     */
-    public boolean thiefRaid(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000)+1;
-
-        // 2.0% chance it hits
-        if(probability <= 20){
-            return true;
-        }
-        else { return false; }
-    }
-
-    /**
-     * losePartMember - tells if you lose a party member that day, if so you lose 3 days
-     * @return true if 1% chance hits, false otherwise
-     */
-    public boolean losePartyMember(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000)+1;
-
-        // 1% chance it hits
-        if(probability <= 10){
-            return true;
-        }
-        else { return false; }
-    }
-
-    /**
-     * findWagon - Tells if you find an abandoned wagon on the trail and gain supplies
-     * @return true if 2% chance hits, false otherwise
-     */
-    public boolean findWagon(){
-        Random temp = new Random();
-        int probability = temp.nextInt(1000)+1;
-
-        // 2% chance it hits
-        if(probability <= 20){
-            return true;
-        }
+        if (hit && temperature >= 50) { return true; }
         else { return false; }
     }
 
@@ -179,13 +78,13 @@ public class RandomEvent {
      * tryHunt - Tells if you are successful in your hunt or not
      * @return - True if your hunt is successful, false if not
      */
-    public boolean tryHunt(){
+    public boolean tryHunt() {
         Random temp = new Random();
         // Tells amount of bullets used on hunt from 5-15 bullets
         int bulletsUsed = temp.nextInt(16) + 5;
         int probability = temp.nextInt(1000) + 1;
 
-        if(probability <= 500){
+        if (probability <= 500) {
             int foodGained = 200;
             // Add functionality to add food to inventory
             return true;
@@ -204,7 +103,7 @@ public class RandomEvent {
 
         // Be aware: events listed at the top are statistically more likely to run
         // due to having placement priority.
-        if(severeBlizzard()) {
+        if (severeBlizzard()) {
             if (eventsHit.size() < 3) {
 
                 //travel half the distance that day, not implemented yet
@@ -213,7 +112,7 @@ public class RandomEvent {
                 eventsHit.add("Severe Blizzard");
             }
         }
-        if(severeThunderstorm()) {
+        if (severeThunderstorm()) {
             if (eventsHit.size() < 3) {
 
                 //travel half the distance that day, not implemented yet
@@ -222,7 +121,7 @@ public class RandomEvent {
                 eventsHit.add("Severe Thunderstorm");
             }
         }
-        if(injuredOx()) {
+        if (runProbability(25)) {
             if (eventsHit.size() < 3) {
                 if (injuredOx) {
                     eventsHit.add("Dead Ox");
@@ -233,7 +132,7 @@ public class RandomEvent {
         }
 
         //If this hits it will take 10 health from the player it hits on
-        if(injuredPartyMember()) {
+        if (runProbability(25)) {
             if (eventsHit.size() < 3) {
                 Random temp = new Random();
                 int partyMemberInjured = temp.nextInt(party.length);
@@ -243,7 +142,7 @@ public class RandomEvent {
                 eventsHit.add(n);
             }
         }
-        if(loseTrail()) {
+        if (runProbability(50)) {
             if (eventsHit.size() < 3) {
 
                 // add something about gaining 1 day time
@@ -252,7 +151,7 @@ public class RandomEvent {
             }
         }
         //If this hits it will take 10 health from the player it hits on & give random disease
-        if(illness()) {
+        if (runProbability(10)) {
             if (eventsHit.size() < 3) {
                 Random temp = new Random();
                 int partyMemberSick = temp.nextInt(party.length);
@@ -262,7 +161,7 @@ public class RandomEvent {
                 eventsHit.add(n);
             }
         }
-        if(thiefRaid()){
+        if (runProbability(10)) {
             if (eventsHit.size() < 3) {
 
                 //put something about taking away a small amount of food
@@ -271,7 +170,7 @@ public class RandomEvent {
                 eventsHit.add("Thief raids your wagon");
             }
         }
-        if(findWagon()){
+        if (runProbability(20)) {
             if (eventsHit.size() < 3) {
 
                 //put something about gaining a small amount of food
@@ -280,7 +179,7 @@ public class RandomEvent {
                 eventsHit.add("You find an abandoned wagon");
             }
         }
-        if(losePartyMember()){
+        if (runProbability(10)) {
             if (eventsHit.size() < 3) {
 
                 // Lose 3 days time, not implemented yet
@@ -288,7 +187,7 @@ public class RandomEvent {
                 eventsHit.add("Hattie gets lost");
             }
         }
-        if(eventsHit.size() == 0){
+        if (eventsHit.size() == 0) {
             eventsHit.add("No events today");
         }
         return eventsHit;
