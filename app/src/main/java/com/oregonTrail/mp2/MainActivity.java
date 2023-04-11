@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // Run random events
                     RandomEvent randomizer = new RandomEvent();
-                    ArrayList<String> messages = randomizer.dailyEvents(party,  wagon.getOxen().isInjured());
+                    ArrayList<String> messages = randomizer.dailyEvents(party,  wagon);
                     StringBuilder message = new StringBuilder();
 
                     // Add newlines for different text events

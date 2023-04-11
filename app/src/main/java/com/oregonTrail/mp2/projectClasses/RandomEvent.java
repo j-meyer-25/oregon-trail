@@ -95,10 +95,10 @@ public class RandomEvent {
     /**
      * dailyEvents - Method to run all random events that can happen in one day
      * @param party - Array list of members of the travelling party to be used for events
-     * @param injuredOx - Checks if an ox is injures, if so, if the injured ox event is hit it will kill one ox
+     *
      * @return eventsHit - String ArrayList of all events which are hit in one day
      */
-    public ArrayList<String> dailyEvents(Member[] party, boolean injuredOx) {
+    public ArrayList<String> dailyEvents(Member[] party, Wagon wagon) {
         ArrayList<String> eventsHit = new ArrayList<String>();
 
         // Be aware: events listed at the top are statistically more likely to run
@@ -123,11 +123,10 @@ public class RandomEvent {
         }
         if (runProbability(25)) {
             if (eventsHit.size() < 3) {
-                if (injuredOx) {
-                    eventsHit.add("Dead Ox");
-                } else {
-                    eventsHit.add("Injured Ox");
-                }
+                Oxen oxen = wagon.getOxen();
+                oxen.injureOxen();
+                if (oxen.isInjured()) { eventsHit.add("Dead Ox"); }
+                else { eventsHit.add("Injured Ox"); }
             }
         }
 
@@ -137,7 +136,7 @@ public class RandomEvent {
                 Random temp = new Random();
                 int partyMemberInjured = temp.nextInt(party.length);
                 String member = party[partyMemberInjured].getName();
-                party[partyMemberInjured].removeHealth(10);
+                party[partyMemberInjured].removeHealth(12);
                 String n =  member + " was injured";
                 eventsHit.add(n);
             }
