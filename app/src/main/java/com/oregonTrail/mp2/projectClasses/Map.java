@@ -46,12 +46,6 @@ public class Map {
     }
 
     /** Getters & Setters */
-    public String updateDate(){
-        // Adds one to compensate for the error of starting and being on the same day so displays 0
-        this.dayOfMonth = (currentDay+1) - startOfMonth;
-        this.date = dayOfMonth + " " + month + ", " + year;
-        return this.date;
-    }
     public int getMilesTraveled() { return milesTraveled; }
     public int getYear(){return this.year;}
     public int getCurrentZone() { return currentZone; }
@@ -74,7 +68,18 @@ public class Map {
     public String getLandmarkName(int landmark) { return landmarks[landmark].split("/")[1]; }
 
     /**
-     * Increments day and updates what the current month is
+     * updateDate - Methods to update the current day month and year on GUI
+     * @return String holding the current day month and year to be output to GUI
+     */
+    public String updateDate(){
+        // Adds one to compensate for the error of starting and being on the same day so displays 0
+        this.dayOfMonth = (currentDay+1) - startOfMonth;
+        this.date = dayOfMonth + " " + month + ", " + year;
+        return this.date;
+    }
+
+    /**
+     * incrementDay - Increments day and updates what the current month is
      */
     public void incrementDay() {
         this.currentDay++;
