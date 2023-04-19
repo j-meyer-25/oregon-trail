@@ -22,6 +22,7 @@ import com.oregonTrail.mp2.projectClasses.RandomEvent;
 import com.oregonTrail.mp2.projectClasses.Wagon;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         Map map = new Map();
         Wagon wagon = new Wagon(800);
         wagon.setDefaultInventory();
+        final int[][] waitTime = {{0}};
+        final boolean[] waited = {false};
 
         // Init the gui elements
         TextView dateBox = (TextView) findViewById(R.id.DateBox);
@@ -72,10 +75,26 @@ public class MainActivity extends AppCompatActivity {
                 if (map.getMilesTraveled() < map.getTrailPointEnd()) {
                     dialogueBox.setText("");
 
+                    //Sets random time to wait for the ferry 1-3 days
+                    if((map.getCurrentLandmark() == 1 || map.getCurrentLandmark() == 2) && waitTime[0][0] == 0 && !waited[0] && (map.getMilesTraveled() == 96 || map.getMilesTraveled() == 168)){
+                        Random temp = new Random();
+                        // Boolean variable waited to check if we have already waited for the current river or not
+                        waitTime[0][0] = temp.nextInt(3) + 1;
+                        waited[0] = true;
+                    }
+
+                    if(!(map.getMilesTraveled() == 96 || map.getMilesTraveled() == 168)){
+                        waited[0] = false;
+                    }
+
                     // Increment the day and move forward
                     map.incrementDay();
-                    int milesGone = wagon.driveForward();
-                    map.update(milesGone);
+
+                    // Only moves forward if you are not waiting for ferry
+                    if(waitTime[0][0] == 0) {
+                        int milesGone = wagon.driveForward();
+                        map.update(milesGone);
+                    }
 
                     // Eat some food and heal
                     for (Member member : party) {
@@ -85,8 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
                     // Run random events
                     RandomEvent randomizer = new RandomEvent();
-                    ArrayList<String> messages = randomizer.dailyEvents(party,  wagon);
+                    ArrayList<String> messages = randomizer.dailyEvents(party, wagon);
                     StringBuilder message = new StringBuilder();
+
 
                     // Add newlines for different text events
                     for (String msg : messages) { message.append(msg).append("\n"); }
@@ -96,6 +116,17 @@ public class MainActivity extends AppCompatActivity {
                         String appendedMessage = "Currently at " + map.getLandmarkName(map.getCurrentLandmark());
                         message.append(appendedMessage);
                     }
+
+                    // Must announce that you are still waiting for ferry
+                    if(waitTime[0][0] > 0){
+                        String waitAnnounce = "\nMust wait " + waitTime[0][0] + " more days for the ferry.";
+                        message.append(waitAnnounce);
+                        waitTime[0][0]--;
+                       // if(waitTime[0][0] == 0){
+                         //   waited[0] = false;
+                        //}
+                    }
+
                     dialogueBox.setText(message);
 
                     displayButtons();
