@@ -64,6 +64,36 @@ public class MainActivity extends AppCompatActivity {
 
         Button nextButton = (Button) findViewById(R.id.contButton);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button huntButton = (Button) findViewById(R.id.huntButton);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button restButton = (Button) findViewById(R.id.restButton);
+
+        restButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Eat food and heal 6 health per day rested
+                for (Member member : partyList) {
+                    wagon.getInventory().get(0).incrementQuantity(-5);
+                    // Don't heal people who have died already
+                    if(member.getHealth() > 0 && member.getHealth() <=94) {
+                        member.setHealth(member.getHealth() + 6);
+                    }
+                    else if(member.getHealth() > 0 && member.getHealth() >94){
+                        member.setHealth(100);
+                    }
+                }
+                map.incrementDay();
+                // Day Box Update
+                String dayMessage = "Day: " + map.updateDate();
+                dateBox.setText(dayMessage);
+                // Food Box Update
+                String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
+                foodBox.setText(foodMessage);
+                // Health Box Update
+                String healthBoxMessage = "Health\n";
+                for (Member memb : party) { healthBoxMessage += memb.getName().split(" ")[0] + ": " + memb.getHealth() + " HP\n"; }
+                healthBox.setText(healthBoxMessage);
+
+            }
+        });
 
         // Hunt when button is pressed
         huntButton.setOnClickListener(new View.OnClickListener(){
