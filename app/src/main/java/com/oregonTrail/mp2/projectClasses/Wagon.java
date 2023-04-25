@@ -18,6 +18,7 @@ public class Wagon {
     private ArrayList<Item> inventory = new ArrayList<>();
     private Oxen oxen = new Oxen(50, "Oxen", "", 6);
     private int pace = 1; // 1-4
+    private double paceMultiplier = 1;
 
     /** Constructor */
     public Wagon(double starterCash) { this.money = starterCash; }
@@ -27,6 +28,10 @@ public class Wagon {
     public ArrayList<Item> getInventory() { return this.inventory; }
     public Oxen getOxen() { return this.oxen; }
     public int getPace() { return this.pace; }
+
+    public void setPaceMultiplier(double paceMultiplier) {
+        this.paceMultiplier = paceMultiplier;
+    }
 
     /** Setters */
     public void setMoney(double money) { this.money = money; }
@@ -44,7 +49,8 @@ public class Wagon {
      */
     public int driveForward() {
         int milesForward = 0;
-        milesForward += Math.floor(2.3*(this.getPace() - 1) + 22); // Custom pace formula
+        milesForward += Math.floor( (2.3*(this.getPace() - 1) + 22) * this.paceMultiplier ); // Custom pace formula
+        setPaceMultiplier(1.0);
         // TODO have more things like weather impact the milesForward
         return milesForward;
     }

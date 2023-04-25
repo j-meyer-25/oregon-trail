@@ -116,8 +116,7 @@ public class RandomEvent {
         if (severeThunderstorm()) {
             if (eventsHit.size() < 3) {
 
-                //travel half the distance that day, not implemented yet
-                //also take away food for days missed
+                wagon.setPaceMultiplier(0.5);
 
                 eventsHit.add("Severe Thunderstorm");
             }
