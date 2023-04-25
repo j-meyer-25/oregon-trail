@@ -109,7 +109,9 @@ public class MainActivity extends AppCompatActivity {
                     lastHunt[0] = map.getDay();
                     if(huntSuccessful()){
                         // Adds food and updates display
-                        wagon.getInventory().get(0).incrementQuantity(+50);
+                        Random temp = new Random();
+                        int foodGathered = temp.nextInt(240)+10;
+                        wagon.getInventory().get(0).incrementQuantity(+foodGathered);
                         String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
                         foodBox.setText(foodMessage);
                         String message = "Hunt successful, gained 50 food";
@@ -150,15 +152,15 @@ public class MainActivity extends AppCompatActivity {
                 if (map.getMilesTraveled() < map.getTrailPointEnd()) {
                     dialogueBox.setText("");
 
-                    // Sets random time to wait for the ferry 1-3 days
-                    if((map.getCurrentLandmark() == 1 || map.getCurrentLandmark() == 2) && waitTime[0][0] == 0 && !waited[0] && (map.getMilesTraveled() == 96 || map.getMilesTraveled() == 168)){
+                    //Sets random time to wait for the ferry 1-3 days
+                    if((map.getCurrentLandmark() == 1 || map.getCurrentLandmark() == 2 || map.getCurrentLandmark() == 8 || map.getCurrentLandmark() == 11) && waitTime[0][0] == 0 && !waited[0] && (map.getMilesTraveled()==96 || map.getMilesTraveled()==168 || map.getMilesTraveled()==927 || map.getMilesTraveled()==1304)){
                         Random temp = new Random();
                         // Boolean variable waited to check if we have already waited for the current river or not
                         waitTime[0][0] = temp.nextInt(3) + 1;
                         waited[0] = true;
                     }
 
-                    if(!(map.getMilesTraveled() == 96 || map.getMilesTraveled() == 168)){
+                    if(!(map.getMilesTraveled() == 96 || map.getMilesTraveled() == 168 || map.getMilesTraveled()==927 || map.getMilesTraveled()==1304)){
                         waited[0] = false;
                     }
 
@@ -167,25 +169,13 @@ public class MainActivity extends AppCompatActivity {
 
                     // Only moves forward if you are not waiting for ferry
                     if(waitTime[0][0] == 0) {
-                        if (Map.getLostDays() == 0) {
-                            int milesGone = wagon.driveForward();
-                            map.update(milesGone);
-                        } else {
-                            for (int i = 0; i < Map.getLostDays(); i++) { map.incrementDay(); }
-                            Map.setLostDays(0);
-                        }
+                        int milesGone = wagon.driveForward();
+                        map.update(milesGone);
                     }
 
                     // Eat some food and heal
                     for (Member member : partyList) {
-                        // Eat food or hurt if none
-                        if (wagon.getInventory().get(0).getQuantity() > 0) {
-                            wagon.getInventory().get(0).incrementQuantity(-5);
-                        } else {
-                            member.removeHealth(25);
-                        }
-
-
+                        wagon.getInventory().get(0).incrementQuantity(-5);
                         // Don't heal people who have died already
                         if(member.getHealth() > 0) {
                             member.naturalHealing();
@@ -209,7 +199,9 @@ public class MainActivity extends AppCompatActivity {
                             // Marks that it has already announced death so that it does not repeat
                             member.setDiedYet(true);
                             partyList.remove(member);
-                            if(partyList.size() == 0) { gameOver[0] = true; }
+                            if(partyList.size() == 0){
+                                gameOver[0] = true;
+                            }
                         }
                     }
 
@@ -239,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                     wagon.setDefaultInventory();
                     for (Member memb : party) {
                         memb.setHealth(100);
-                        if(memb.getDiedYet()) {
+                        if(memb.getDiedYet()){
                             partyList.add(memb);
                             memb.setDiedYet(false);
                         }

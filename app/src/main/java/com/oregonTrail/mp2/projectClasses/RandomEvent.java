@@ -96,7 +96,7 @@ public class RandomEvent {
     /**
      * dailyEvents - Method to run all random events that can happen in one day
      * @param party - Array list of members of the travelling party to be used for events
-     *
+     * @param wagon - Wagon object to be used to make random events affect gameplay
      * @return eventsHit - String ArrayList of all events which are hit in one day
      */
     public ArrayList<String> dailyEvents(ArrayList<Member> party, Wagon wagon) {
