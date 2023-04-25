@@ -109,7 +109,9 @@ public class MainActivity extends AppCompatActivity {
                     lastHunt[0] = map.getDay();
                     if(huntSuccessful()){
                         // Adds food and updates display
-                        wagon.getInventory().get(0).incrementQuantity(+50);
+                        Random temp = new Random();
+                        int foodGathered = temp.nextInt(240)+10;
+                        wagon.getInventory().get(0).incrementQuantity(+foodGathered);
                         String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
                         foodBox.setText(foodMessage);
                         String message = "Hunt successful, gained 50 food";
