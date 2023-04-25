@@ -69,29 +69,35 @@ public class MainActivity extends AppCompatActivity {
         restButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Eat food and heal 6 health per day rested
-                for (Member member : partyList) {
-                    wagon.getInventory().get(0).incrementQuantity(-5);
-                    // Don't heal people who have died already
-                    if(member.getHealth() > 0 && member.getHealth() <=94) {
-                        member.setHealth(member.getHealth() + 6);
+                if (gameOver[0]) {
+                    String gameOverMessage = "All party members have died, Game Over!";
+                    dialogueBox.setText(gameOverMessage);
+                } else {
+                    // Eat food and heal 6 health per day rested
+                    for (Member member : partyList) {
+                        wagon.getInventory().get(0).incrementQuantity(-5);
+                        // Don't heal people who have died already
+                        if (member.getHealth() > 0 && member.getHealth() <= 94) {
+                            member.setHealth(member.getHealth() + 6);
+                        } else if (member.getHealth() > 0 && member.getHealth() > 94) {
+                            member.setHealth(100);
+                        }
                     }
-                    else if(member.getHealth() > 0 && member.getHealth() >94){
-                        member.setHealth(100);
+                    map.incrementDay();
+                    // Day Box Update
+                    String dayMessage = "Day: " + map.updateDate();
+                    dateBox.setText(dayMessage);
+                    // Food Box Update
+                    String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
+                    foodBox.setText(foodMessage);
+                    // Health Box Update
+                    String healthBoxMessage = "Health\n";
+                    for (Member memb : party) {
+                        healthBoxMessage += memb.getName().split(" ")[0] + ": " + memb.getHealth() + " HP\n";
                     }
-                }
-                map.incrementDay();
-                // Day Box Update
-                String dayMessage = "Day: " + map.updateDate();
-                dateBox.setText(dayMessage);
-                // Food Box Update
-                String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
-                foodBox.setText(foodMessage);
-                // Health Box Update
-                String healthBoxMessage = "Health\n";
-                for (Member memb : party) { healthBoxMessage += memb.getName().split(" ")[0] + ": " + memb.getHealth() + " HP\n"; }
-                healthBox.setText(healthBoxMessage);
+                    healthBox.setText(healthBoxMessage);
 
+                }
             }
         });
 
@@ -105,7 +111,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Checks if the last time they hunted was long enough ago
-                if(map.getDay() - lastHunt[0] >= 1){
+                if(gameOver[0]){
+                    String gameOverMessage = "All party members have died, Game Over!";
+                    dialogueBox.setText(gameOverMessage);
+                }
+                else if(map.getDay() - lastHunt[0] >= 1){
                     lastHunt[0] = map.getDay();
                     if(huntSuccessful()){
                         // Adds food and updates display
@@ -225,7 +235,11 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onClick(View view) {
-                if (!map.isGameWon()) { runDay(); }
+                if(gameOver[0]){
+                    String gameOverMessage = "All party members have died, Game Over!";
+                    dialogueBox.setText(gameOverMessage);
+                }
+                else if (!map.isGameWon()) { runDay(); }
                 else {
                     map.resetMap();
                     wagon.setDefaultInventory();
