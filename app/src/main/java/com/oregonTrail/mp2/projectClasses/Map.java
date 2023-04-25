@@ -18,6 +18,9 @@ public class Map {
     private int currentDay = 0;
     private boolean atLandmark = true;
     private boolean reachedEndgameFlag = false;
+
+    // Amount of days lost in a day
+    private static int lostDays = 0;
     private String month = "";
     private int dayOfMonth = 1;
     private int startOfMonth = 0;
@@ -55,6 +58,7 @@ public class Map {
     //public int getNextLandmark() { return landmarkDistances[this.currentLandmark + 1]; }
     public int getMilesUntilNextLandmark() { return this.milesUntilNextLandmark; }
     public int getDay() {return this.currentDay;}
+    public static int getLostDays() { return lostDays; }
     public boolean isAtLandmark() { return this.atLandmark; }
     public boolean isGameWon() { return this.reachedEndgameFlag; }
     public int getTrailPointEnd() {
@@ -66,6 +70,8 @@ public class Map {
     public void setMilesTraveled(int milesTraveled) { this.milesTraveled = milesTraveled; }
     public void setCurrentLandmark(int landmarkIndex) { this.currentLandmark = landmarkIndex; }
     public void setDay(int day) { this.currentDay = day; }
+    public static void addLostDays(int days) { lostDays += days; }
+    public static void setLostDays(int days) { lostDays = days; }
     public void setMilesUntilNextLandmark(int miles){ this.milesUntilNextLandmark = miles; }
     public String getLandmarkName(int landmark) { return landmarks[landmark].split("/")[1]; }
 
