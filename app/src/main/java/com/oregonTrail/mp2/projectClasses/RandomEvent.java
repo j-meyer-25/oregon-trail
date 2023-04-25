@@ -106,18 +106,13 @@ public class RandomEvent {
         // due to having placement priority.
         if (severeBlizzard()) {
             if (eventsHit.size() < 3) {
-
-                //travel half the distance that day, not implemented yet
-                //also take away food for days missed
-
+                wagon.setPaceMultiplier(0.1);
                 eventsHit.add("Severe Blizzard");
             }
         }
         if (severeThunderstorm()) {
             if (eventsHit.size() < 3) {
-
                 wagon.setPaceMultiplier(0.5);
-
                 eventsHit.add("Severe Thunderstorm");
             }
         }
@@ -143,10 +138,8 @@ public class RandomEvent {
         }
         if (runProbability(50)) {
             if (eventsHit.size() < 3) {
-
-                // add something about gaining 1 day time
-
-                eventsHit.add("Lose Trail");
+                Map.addLostDays(1);
+                eventsHit.add("Lose Trail - no progress today");
             }
         }
         //If this hits it will take 10 health from the player it hits on & give random disease
@@ -155,35 +148,27 @@ public class RandomEvent {
                 Random temp = new Random();
                 int partyMemberSick = temp.nextInt(party.size());
                 String member = party.get(partyMemberSick).getName();
-                party.get(partyMemberSick).removeHealth(10);
+                party.get(partyMemberSick).removeHealth(30);
                 String n =  member + " has gotten dysentery";
                 eventsHit.add(n);
             }
         }
         if (runProbability(10)) {
             if (eventsHit.size() < 3) {
-
-                //put something about taking away a small amount of food
-                //leaving it to you since i have not initialized any item objects
-
-                eventsHit.add("Thief raids your wagon");
+                wagon.getInventory().get(0).incrementQuantity(-90);
+                eventsHit.add("Thief raids your wagon - lose 90 food");
             }
         }
         if (runProbability(20)) {
             if (eventsHit.size() < 3) {
-
-                //put something about gaining a small amount of food
-                // leaving it to you since i have not initialized any item objects
-
-                eventsHit.add("You find an abandoned wagon");
+                wagon.getInventory().get(0).incrementQuantity(40);
+                eventsHit.add("You find an abandoned wagon - gain 40 food");
             }
         }
         if (runProbability(10)) {
             if (eventsHit.size() < 3) {
-
-                // Lose 3 days time, not implemented yet
-
-                eventsHit.add("Hattie gets lost");
+                Map.addLostDays(3);
+                eventsHit.add("Someone got lost - lose 3 days");
             }
         }
         if (eventsHit.size() == 0) {

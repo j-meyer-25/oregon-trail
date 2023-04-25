@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 if (map.getMilesTraveled() < map.getTrailPointEnd()) {
                     dialogueBox.setText("");
 
-                    //Sets random time to wait for the ferry 1-3 days
+                    // Sets random time to wait for the ferry 1-3 days
                     if((map.getCurrentLandmark() == 1 || map.getCurrentLandmark() == 2) && waitTime[0][0] == 0 && !waited[0] && (map.getMilesTraveled() == 96 || map.getMilesTraveled() == 168)){
                         Random temp = new Random();
                         // Boolean variable waited to check if we have already waited for the current river or not
@@ -167,13 +167,25 @@ public class MainActivity extends AppCompatActivity {
 
                     // Only moves forward if you are not waiting for ferry
                     if(waitTime[0][0] == 0) {
-                        int milesGone = wagon.driveForward();
-                        map.update(milesGone);
+                        if (Map.getLostDays() == 0) {
+                            int milesGone = wagon.driveForward();
+                            map.update(milesGone);
+                        } else {
+                            for (int i = 0; i < Map.getLostDays(); i++) { map.incrementDay(); }
+                            Map.setLostDays(0);
+                        }
                     }
 
                     // Eat some food and heal
                     for (Member member : partyList) {
-                        wagon.getInventory().get(0).incrementQuantity(-5);
+                        // Eat food or hurt if none
+                        if (wagon.getInventory().get(0).getQuantity() > 0) {
+                            wagon.getInventory().get(0).incrementQuantity(-5);
+                        } else {
+                            member.removeHealth(25);
+                        }
+
+
                         // Don't heal people who have died already
                         if(member.getHealth() > 0) {
                             member.naturalHealing();
@@ -197,9 +209,7 @@ public class MainActivity extends AppCompatActivity {
                             // Marks that it has already announced death so that it does not repeat
                             member.setDiedYet(true);
                             partyList.remove(member);
-                            if(partyList.size() == 0){
-                                gameOver[0] = true;
-                            }
+                            if(partyList.size() == 0) { gameOver[0] = true; }
                         }
                     }
 
@@ -229,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                     wagon.setDefaultInventory();
                     for (Member memb : party) {
                         memb.setHealth(100);
-                        if(memb.getDiedYet()){
+                        if(memb.getDiedYet()) {
                             partyList.add(memb);
                             memb.setDiedYet(false);
                         }

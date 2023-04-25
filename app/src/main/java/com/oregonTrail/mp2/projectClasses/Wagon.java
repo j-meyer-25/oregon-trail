@@ -51,7 +51,6 @@ public class Wagon {
         int milesForward = 0;
         milesForward += Math.floor( (2.3*(this.getPace() - 1) + 22) * this.paceMultiplier ); // Custom pace formula
         setPaceMultiplier(1.0);
-        // TODO have more things like weather impact the milesForward
         return milesForward;
     }
 
