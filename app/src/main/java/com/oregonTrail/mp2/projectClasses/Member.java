@@ -22,6 +22,7 @@ public class Member {
     private boolean hasTyphoid = false;
     private boolean hasHeatExhaust = false;
     private boolean hasMountainFever = false;
+    private boolean diedYet = false;
 
     /** Constructor for member class */
     public Member(int age, String name){
@@ -30,6 +31,7 @@ public class Member {
     }
 
     /** Getters & Setters */
+    public boolean getDiedYet(){ return diedYet; }
     public int getAge() {return age;}
     public String getName() {return name;}
     public int getHealth() {return health;}
@@ -40,6 +42,7 @@ public class Member {
     public boolean getHasHeatExhaust() {return hasHeatExhaust;}
     public boolean getHasMountainFever() {return hasMountainFever;}
 
+    public void setDiedYet(boolean diedYet){ this.diedYet = diedYet; }
     public void setAge(int age) {this.age = age;}
     public void setName(String name) {this.name = name;}
     public void setHealth(int health) {this.health = health;}
@@ -58,7 +61,10 @@ public class Member {
     public boolean removeHealth(int amount){
         int currentHealth = getHealth();
         setHealth(currentHealth-amount);
-        return getHealth() > 0;
+        if(getHealth() < 0){
+            health = 0;
+        }
+        return true;
     }
 
     /**
@@ -85,7 +91,7 @@ public class Member {
      */
     public void naturalHealing(){
         Random temp = new Random();
-        int healing = temp.nextInt(3)+3;
+        int healing = temp.nextInt(4);
         this.health = Math.min(this.health + healing, 100);
     }
 }

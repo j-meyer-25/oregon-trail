@@ -36,12 +36,21 @@ public class MainActivity extends AppCompatActivity {
         Member member3 = new Member(40, "Augusta Campbell");
         Member member4 = new Member(7, "Ben Campbell");
         Member member5 = new Member(10, "Jake Campbell");
+        // For use where we must display all 5 members no matter what
         Member[] party = {member1, member2, member3, member4, member5};
+        // List of members to be used for things which affect members so that you can remove the dead members from the list
+        ArrayList<Member> partyList = new ArrayList<Member>();
+        partyList.add(member1);
+        partyList.add(member2);
+        partyList.add(member3);
+        partyList.add(member4);
+        partyList.add(member5);
         Map map = new Map();
         Wagon wagon = new Wagon(800);
         wagon.setDefaultInventory();
         final int[][] waitTime = {{0}};
         final boolean[] waited = {false};
+        final boolean[] gameOver = {false};
 
         // Init the gui elements
         TextView dateBox = (TextView) findViewById(R.id.DateBox);
@@ -97,19 +106,36 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     // Eat some food and heal
-                    for (Member member : party) {
+                    for (Member member : partyList) {
                         wagon.getInventory().get(0).incrementQuantity(-5);
-                        member.naturalHealing();
+                        // Don't heal people who have died already
+                        if(member.getHealth() > 0) {
+                            member.naturalHealing();
+                        }
                     }
 
                     // Run random events
                     RandomEvent randomizer = new RandomEvent();
-                    ArrayList<String> messages = randomizer.dailyEvents(party, wagon);
+                    ArrayList<String> messages = randomizer.dailyEvents(partyList, wagon);
                     StringBuilder message = new StringBuilder();
-
 
                     // Add newlines for different text events
                     for (String msg : messages) { message.append(msg).append("\n"); }
+
+                    // Announce if member dies
+                    for(Member member : party){
+                        //Checks if member has died this round and announces it
+                        if(member.getHealth() == 0 && !member.getDiedYet()){
+                            String announcement = member.getName() +" has died\n";
+                            message.append(announcement);
+                            // Marks that it has already announced death so that it does not repeat
+                            member.setDiedYet(true);
+                            partyList.remove(member);
+                            if(partyList.size() == 0){
+                                gameOver[0] = true;
+                            }
+                        }
+                    }
 
                     // Indicate reaching a landmark
                     if (map.isAtLandmark()) {
@@ -122,9 +148,6 @@ public class MainActivity extends AppCompatActivity {
                         String waitAnnounce = "\nMust wait " + waitTime[0][0] + " more days for the ferry.";
                         message.append(waitAnnounce);
                         waitTime[0][0]--;
-                       // if(waitTime[0][0] == 0){
-                         //   waited[0] = false;
-                        //}
                     }
 
                     dialogueBox.setText(message);
@@ -138,7 +161,13 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     map.resetMap();
                     wagon.setDefaultInventory();
-                    for (Member memb : party) { memb.setHealth(100); }
+                    for (Member memb : party) {
+                        memb.setHealth(100);
+                        if(memb.getDiedYet()){
+                            partyList.add(memb);
+                            memb.setDiedYet(false);
+                        }
+                    }
                 }
             }
         });

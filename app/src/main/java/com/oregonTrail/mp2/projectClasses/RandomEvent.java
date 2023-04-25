@@ -7,6 +7,7 @@
  */
 package com.oregonTrail.mp2.projectClasses;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -98,7 +99,7 @@ public class RandomEvent {
      *
      * @return eventsHit - String ArrayList of all events which are hit in one day
      */
-    public ArrayList<String> dailyEvents(Member[] party, Wagon wagon) {
+    public ArrayList<String> dailyEvents(ArrayList<Member> party, Wagon wagon) {
         ArrayList<String> eventsHit = new ArrayList<String>();
 
         // Be aware: events listed at the top are statistically more likely to run
@@ -134,9 +135,9 @@ public class RandomEvent {
         if (runProbability(25)) {
             if (eventsHit.size() < 3) {
                 Random temp = new Random();
-                int partyMemberInjured = temp.nextInt(party.length);
-                String member = party[partyMemberInjured].getName();
-                party[partyMemberInjured].removeHealth(12);
+                int partyMemberInjured = temp.nextInt(party.size());
+                String member = party.get(partyMemberInjured).getName();
+                party.get(partyMemberInjured).removeHealth(12);
                 String n =  member + " was injured";
                 eventsHit.add(n);
             }
@@ -153,9 +154,9 @@ public class RandomEvent {
         if (runProbability(10)) {
             if (eventsHit.size() < 3) {
                 Random temp = new Random();
-                int partyMemberSick = temp.nextInt(party.length);
-                String member = party[partyMemberSick].getName();
-                party[partyMemberSick].removeHealth(10);
+                int partyMemberSick = temp.nextInt(party.size());
+                String member = party.get(partyMemberSick).getName();
+                party.get(partyMemberSick).removeHealth(10);
                 String n =  member + " has gotten dysentery";
                 eventsHit.add(n);
             }
