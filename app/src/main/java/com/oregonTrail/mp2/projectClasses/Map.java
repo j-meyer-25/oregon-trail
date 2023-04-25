@@ -27,10 +27,12 @@ public class Map {
     // https://www.died-of-dysentery.com/stories
     private static final String[] landmarks = {
             "town/Independence, MS", "river/Kansas River", "river/Big Blue River", "town/Fort Kearney, NE",
-            "sight/Chimney Rock",
+            "sight/Chimney Rock", "town/Fort Laramie", "sight/Independence Rock", "sight/South Pass", "river/Green River Crossing",
+            "sight/Soda Springs", "town/Fort Hall", "river/Snake River Crossing", "town/Fort Boise", "sight/Blue Mountains",
+            "sight/The Dalles", "sight/Willamette Valley",
     };
     // Distance to each landmark from the previous landmark
-    private static final int[] landmarkDistances = {0, 102, 82, 118, 250}; // TODO make these accurate
+    private static final int[] landmarkDistances = {0, 102, 82, 118, 250, 86, 190, 102, 57, 143, 57, 182, 113, 160, 125, 100}; // TODO make these accurate
 
     /** Constructor */
     public Map() {
