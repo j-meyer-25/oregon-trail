@@ -14,7 +14,7 @@
         android:id="@+id/dialogueBox"
         android:layout_width="776dp"
         android:layout_height="185dp"
-        android:background="#27602A"
+        android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
         android:text="This is the dialogue text!"
@@ -24,16 +24,16 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
+        app:layout_constraintVertical_bias="0.802" />
 
     <TextView
         android:id="@+id/DateBox"
         android:layout_width="393dp"
         android:layout_height="62dp"
-        android:background="#27602A"
+        android:background="#597539"
         android:fontFamily="serif"
         android:outlineProvider="none"
         android:padding="5sp"
@@ -43,16 +43,16 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021" />
+        app:layout_constraintVertical_bias="0.016" />
 
     <TextView
         android:id="@+id/healthBox"
-        android:layout_width="425dp"
-        android:layout_height="289dp"
-        android:background="#27602A"
+        android:layout_width="509dp"
+        android:layout_height="333dp"
+        android:background="#597539"
         android:fontFamily="serif"
         android:outlineProvider="none"
         android:padding="5sp"
@@ -72,7 +72,7 @@
         android:id="@+id/LandmarkBox"
         android:layout_width="402dp"
         android:layout_height="57dp"
-        android:background="#27602A"
+        android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
         android:text="Next landmark: "
@@ -81,16 +81,34 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <TextView
+        android:id="@+id/MoneyBox"
+        android:layout_width="404dp"
+        android:layout_height="61dp"
+        android:background="#597539"
+        android:fontFamily="serif"
+        android:padding="5sp"
+        android:text="Money:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.211" />
 
     <TextView
-        android:id="@+id/MilesBox"
+        android:id="@+id/milesBox"
         android:layout_width="404dp"
         android:layout_height="61dp"
-        android:background="#27602A"
+        android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
         android:text="Miles traveled:"
@@ -99,16 +117,16 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.301" />
+        app:layout_constraintVertical_bias="0.162" />
 
     <TextView
         android:id="@+id/FoodBox"
         android:layout_width="407dp"
         android:layout_height="61dp"
-        android:background="#27602A"
+        android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
         android:text="Food: "
@@ -117,10 +135,10 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/DateBox"
-        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/DateBox"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.066" />
 
     <Button
         android:id="@+id/contButton"
@@ -129,35 +147,48 @@
         android:text="Continue"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/huntButton"
+        app:layout_constraintStart_toEndOf="@+id/restButton"
         app:layout_constraintTop_toBottomOf="@+id/dialogueBox"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintVertical_bias="0.423" />
 
     <Button
         android:id="@+id/huntButton"
-        android:layout_width="226dp"
-        android:layout_height="113dp"
+        android:layout_width="223dp"
+        android:layout_height="89dp"
         android:text="Go Hunting"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921" />
+        app:layout_constraintVertical_bias="0.913" />
 
     <Button
         android:id="@+id/restButton"
-        android:layout_width="226dp"
-        android:layout_height="113dp"
+        android:layout_width="225dp"
+        android:layout_height="86dp"
         android:text="Rest"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintVertical_bias="0.91" />
+
+    <Button
+        android:id="@+id/tradeButton"
+        android:layout_width="224dp"
+        android:layout_height="86dp"
+        android:text="Trade"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.986" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

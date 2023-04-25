@@ -29,7 +29,7 @@ public class Map {
 
     // https://www.died-of-dysentery.com/stories
     private static final String[] landmarks = {
-            "town/Independence, MS", "river/Kansas River", "river/Big Blue River", "town/Fort Kearney, NE",
+            "town/Independence, MS", "river/Kansas River", "river/Big Blue River", "town/Fort Kearney",
             "sight/Chimney Rock", "town/Fort Laramie", "sight/Independence Rock", "sight/South Pass", "river/Green River Crossing",
             "sight/Soda Springs", "town/Fort Hall", "river/Snake River Crossing", "town/Fort Boise", "sight/Blue Mountains",
             "sight/The Dalles", "sight/Willamette Valley",
@@ -52,6 +52,7 @@ public class Map {
 
     /** Getters & Setters */
     public int getMilesTraveled() { return milesTraveled; }
+    public static String[] getLandmarks() { return landmarks; }
     public int getYear(){return this.year;}
     public int getCurrentZone() { return currentZone; }
     public int getCurrentLandmark() { return this.currentLandmark; }

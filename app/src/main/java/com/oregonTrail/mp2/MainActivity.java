@@ -53,18 +53,20 @@ public class MainActivity extends AppCompatActivity {
         final boolean[] waited = {false};
         final boolean[] gameOver = {false};
         final int[] lastHunt = {0};
+        final int lastTrade = 0;
 
         // Init the gui elements
         TextView dateBox = (TextView) findViewById(R.id.DateBox);
         TextView foodBox = (TextView) findViewById(R.id.FoodBox);
         TextView landmarkBox = (TextView) findViewById(R.id.LandmarkBox);
-        TextView milesBox = (TextView) findViewById(R.id.MilesBox);
+        TextView milesBox = (TextView) findViewById(R.id.milesBox);
         TextView dialogueBox = (TextView) findViewById(R.id.dialogueBox);
         TextView healthBox = (TextView) findViewById(R.id.healthBox);
 
         Button nextButton = (Button) findViewById(R.id.contButton);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button huntButton = (Button) findViewById(R.id.huntButton);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button restButton = (Button) findViewById(R.id.restButton);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button tradeButton = (Button) findViewById(R.id.tradeButton);
 
         restButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,17 +103,45 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        tradeButton.setOnClickListener(new View.OnClickListener() {
+
+            public boolean tradeSuccessful(){
+                Random temp = new Random();
+                int probability = temp.nextInt(100)+1;
+                return probability <= 30;
+            }
+            @Override
+            public void onClick(View view) {
+                if(map.getDay() - lastHunt[0] >= 1) {
+                    lastHunt[0] = map.getDay();
+                    if(tradeSuccessful()) {
+                        String message = "You got a thing";
+                        dialogueBox.setText(message);
+                    }
+                    else {
+                        String message = "Nobody around here can trade.";
+                        dialogueBox.setText(message);
+                    }
+                }
+                // Have not waited long enough to hunt again
+                else {
+                    String message = "Must wait to trade";
+                    dialogueBox.setText(message);
+                }
+            }
+        });
+
         // Hunt when button is pressed
         huntButton.setOnClickListener(new View.OnClickListener(){
             public boolean huntSuccessful(){
                 Random temp = new Random();
-                int probability = temp.nextInt(100)+1;
+                int probability = temp.nextInt(100) + 1;
                 return probability <= 33;
             }
             @Override
             public void onClick(View view) {
                 // Checks if the last time they hunted was long enough ago
-                if(gameOver[0]){
+                if(gameOver[0]) {
                     String gameOverMessage = "All party members have died, Game Over!";
                     dialogueBox.setText(gameOverMessage);
                 }
@@ -125,13 +155,13 @@ public class MainActivity extends AppCompatActivity {
                         String message = "Hunt successful, gained 50 food";
                         dialogueBox.setText(message);
                     }
-                    else{
+                    else {
                         String message = "Hunt failed. Try again tomorrow.";
                         dialogueBox.setText(message);
                     }
                 }
                 // Have not waited long enough to hunt again
-                else{
+                else {
                     String message = "Must wait to hunt.";
                     dialogueBox.setText(message);
                 }
@@ -161,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                     dialogueBox.setText("");
 
                     //Sets random time to wait for the ferry 1-3 days
-                    if((map.getCurrentLandmark() == 1 || map.getCurrentLandmark() == 2) && waitTime[0][0] == 0 && !waited[0] && (map.getMilesTraveled() == 96 || map.getMilesTraveled() == 168)){
+                    if(Map.getLandmarks()[map.getCurrentLandmark()].split("/")[0] == "river"){
                         Random temp = new Random();
                         // Boolean variable waited to check if we have already waited for the current river or not
                         waitTime[0][0] = temp.nextInt(3) + 1;
