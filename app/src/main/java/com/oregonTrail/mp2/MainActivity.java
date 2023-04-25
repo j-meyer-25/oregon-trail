@@ -11,6 +11,7 @@ package com.oregonTrail.mp2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         final int[][] waitTime = {{0}};
         final boolean[] waited = {false};
         final boolean[] gameOver = {false};
+        final int[] lastHunt = {0};
 
         // Init the gui elements
         TextView dateBox = (TextView) findViewById(R.id.DateBox);
@@ -61,6 +63,40 @@ public class MainActivity extends AppCompatActivity {
         TextView healthBox = (TextView) findViewById(R.id.healthBox);
 
         Button nextButton = (Button) findViewById(R.id.contButton);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button huntButton = (Button) findViewById(R.id.huntButton);
+
+        // Hunt when button is pressed
+        huntButton.setOnClickListener(new View.OnClickListener(){
+            public boolean huntSuccessful(){
+                Random temp = new Random();
+                int probability = temp.nextInt(100)+1;
+                return probability <= 33;
+            }
+            @Override
+            public void onClick(View view) {
+                // Checks if the last time they hunted was long enough ago
+                if(map.getDay() - lastHunt[0] >= 1){
+                    lastHunt[0] = map.getDay();
+                    if(huntSuccessful()){
+                        // Adds food and updates display
+                        wagon.getInventory().get(0).incrementQuantity(+50);
+                        String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
+                        foodBox.setText(foodMessage);
+                        String message = "Hunt successful, gained 50 food";
+                        dialogueBox.setText(message);
+                    }
+                    else{
+                        String message = "Hunt failed. Try again tomorrow.";
+                        dialogueBox.setText(message);
+                    }
+                }
+                // Have not waited long enough to hunt again
+                else{
+                    String message = "Must wait to hunt.";
+                    dialogueBox.setText(message);
+                }
+            }
+        });
 
         // Loop every day until we reach the end (or die, not implemented).
         nextButton.setOnClickListener(new View.OnClickListener() {
