@@ -12,6 +12,7 @@ package com.oregonTrail.mp2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Creates methods for back button and stats button
+        configureTitleButton();
+        configureStatsButton();
 
         // Init the party members & wagon
         Member member1 = new Member(13, "Hattie Campbell");
@@ -293,6 +298,26 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+            }
+        });
+    }
+
+    private void configureTitleButton(){
+        Button titleButton = (Button) findViewById(R.id.titleButton);
+        titleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    private void configureStatsButton(){
+        Button statsButton = (Button) findViewById(R.id.statsButton);
+        statsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, StatsPage.class));
             }
         });
     }

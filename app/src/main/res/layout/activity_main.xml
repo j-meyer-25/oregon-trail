@@ -12,8 +12,8 @@
 
     <TextView
         android:id="@+id/dialogueBox"
-        android:layout_width="776dp"
-        android:layout_height="185dp"
+        android:layout_width="797dp"
+        android:layout_height="378dp"
         android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
@@ -24,10 +24,10 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.717" />
 
     <TextView
         android:id="@+id/DateBox"
@@ -144,7 +144,7 @@
         android:id="@+id/contButton"
         android:layout_width="226dp"
         android:layout_height="113dp"
-        android:text="Continue"
+        android:text="Next Day"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/huntButton"
@@ -169,7 +169,7 @@
         android:id="@+id/restButton"
         android:layout_width="225dp"
         android:layout_height="86dp"
-        android:text="Rest"
+        android:text="Rest Day"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -190,5 +190,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.986" />
+
+    <Button
+        android:id="@+id/titleButton"
+        android:layout_width="454dp"
+        android:layout_height="85dp"
+        android:text="End Game/Title Screen"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.421" />
+
+    <Button
+        android:id="@+id/statsButton"
+        android:layout_width="457dp"
+        android:layout_height="80dp"
+        android:text="Stats"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.344" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
