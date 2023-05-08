@@ -87,7 +87,7 @@ public class Member {
     }
 
     /**
-     * naturalHealing - Gives 3-5 health back each day to every player as a natural healing process
+     * naturalHealing - Gives 0-3 health back each day to every player as a natural healing process
      */
     public void naturalHealing(){
         Random temp = new Random();

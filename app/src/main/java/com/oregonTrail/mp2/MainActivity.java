@@ -112,29 +112,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Checks if the last time they hunted was long enough ago
-                if(gameOver[0]) {
-                    String gameOverMessage = "All party members have died, Game Over!";
-                    dialogueBox.setText(gameOverMessage);
-                }
-                else if(map.getDay() - lastHunt[0] >= 1){
-                    lastHunt[0] = map.getDay();
-                    if(huntSuccessful()){
-                        // Adds food and updates display
-                        wagon.getInventory().get(0).incrementQuantity(+100);
-                        String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
-                        // foodBox.setText(foodMessage);
-                        String message = "Hunt successful, gained 100 food";
-                        dialogueBox.setText(message);
-                    }
-                    else {
-                        String message = "Hunt failed. Try again tomorrow.";
-                        dialogueBox.setText(message);
-                    }
-                }
-                // Have not waited long enough to hunt again
-                else {
-                    String message = "Must wait to hunt.";
+                if(wagon.getInventory().get(4).getQuantity() == 0){
+                    String message = "Out of ammo, cannot hunt today";
                     dialogueBox.setText(message);
+                }
+                else {
+                    wagon.getInventory().get(4).incrementQuantity(-10);
+                    if (gameOver[0]) {
+                        String gameOverMessage = "All party members have died, Game Over!";
+                        dialogueBox.setText(gameOverMessage);
+                    } else if (map.getDay() - lastHunt[0] >= 1) {
+                        lastHunt[0] = map.getDay();
+                        if (huntSuccessful()) {
+                            // Adds food and updates display
+                            wagon.getInventory().get(0).incrementQuantity(+100);
+                            String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
+                            // foodBox.setText(foodMessage);
+                            String message = "Hunt successful, gained 100 food";
+                            dialogueBox.setText(message);
+                        } else {
+                            String message = "Hunt failed. Try again tomorrow.";
+                            dialogueBox.setText(message);
+                        }
+                    }
+                    // Have not waited long enough to hunt again
+                    else {
+                        String message = "Must wait to hunt.";
+                        dialogueBox.setText(message);
+                    }
                 }
             }
         });

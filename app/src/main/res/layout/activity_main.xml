@@ -24,8 +24,8 @@
 
     <TextView
         android:id="@+id/dialogueBox"
-        android:layout_width="754dp"
-        android:layout_height="182dp"
+        android:layout_width="742dp"
+        android:layout_height="246dp"
         android:alpha=".8"
         android:background="#32510F"
         android:fontFamily="serif"
@@ -34,7 +34,7 @@
         android:shadowDx="4.5"
         android:shadowDy="4.3"
         android:shadowRadius="5.6"
-        android:text="This is the dialogue text!"
+        android:text="Welcome to the Oregon Trail!\nThe date is April 14, 1847 and you, Hattie Campbell, and your family are about to make the dangerous trip to Oregon. You wish for free land and a better life.\nGood Luck!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
         android:textSize="34sp"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.706" />
 
     <TextView
         android:id="@+id/DateBox"

@@ -125,8 +125,58 @@ public class RandomEvent {
             }
         }
 
+        // Random even for wagon wheel breaking
+        if(runProbability(25)){
+            if(eventsHit.size() < 3){
+                wagon.setPaceMultiplier(0.5);
+                if(wagon.getInventory().get(5).getQuantity() == 0){
+                    wagon.setPaceMultiplier(0.0);
+                    String n = "Wagon wheel breaks, no extra to repair it";
+                }
+                else {
+                    wagon.getInventory().get(5).incrementQuantity(-1);
+                    wagon.setPaceMultiplier(0.5);
+                    String n = "Wagon wheel breaks, Hattie repairs using 1 spare wheel";
+                    eventsHit.add(n);
+                }
+            }
+        }
+
+        // Random even for wagon axel breaking
+        if(runProbability(25)){
+            if(eventsHit.size() < 3){
+                wagon.setPaceMultiplier(0.5);
+                if(wagon.getInventory().get(6).getQuantity() == 0){
+                    wagon.setPaceMultiplier(0.0);
+                    String n = "Wagon axel breaks, no extra to repair it";
+                }
+                else {
+                    wagon.getInventory().get(6).incrementQuantity(-1);
+                    wagon.setPaceMultiplier(0.5);
+                    String n = "Wagon axel breaks, Hattie repairs using 1 spare axel";
+                    eventsHit.add(n);
+                }
+            }
+        }
+
+        // Random even for wagon tongue breaking
+        if(runProbability(25)){
+            if(eventsHit.size() < 3){
+                if(wagon.getInventory().get(7).getQuantity() == 0){
+                    wagon.setPaceMultiplier(0.0);
+                    String n = "Wagon tongue breaks, no extra to repair it";
+                }
+                else {
+                    wagon.getInventory().get(7).incrementQuantity(-1);
+                    wagon.setPaceMultiplier(0.5);
+                    String n = "Wagon tongue breaks, Hattie repairs using 1 spare tongue";
+                    eventsHit.add(n);
+                }
+            }
+        }
+
         //If this hits it will take 10 health from the player it hits on
-        if (runProbability(50)) {
+        if (runProbability(150)) {
             if (eventsHit.size() < 3) {
                 Random temp = new Random();
                 int partyMemberInjured = temp.nextInt(party.size());
@@ -143,7 +193,7 @@ public class RandomEvent {
             }
         }
         //If this hits it will take 10 health from the player it hits on & give random disease
-        if (runProbability(20)) {
+        if (runProbability(100)) {
             if (eventsHit.size() < 3) {
                 Random temp = new Random();
                 int partyMemberSick = temp.nextInt(party.size());
@@ -171,6 +221,20 @@ public class RandomEvent {
                 eventsHit.add("Someone got lost - lose 3 days");
             }
         }
+
+        // 1 in 1 million chance someone gets struck by lightning and dies
+        if(eventsHit.size() < 3){
+            Random temp = new Random();
+            int probability = temp.nextInt(1000000)+1;
+            if(probability == 1){
+                int partyMemberStruck = temp.nextInt(party.size());
+                String member = party.get(partyMemberStruck).getName();
+                party.get(partyMemberStruck).removeHealth(100);
+                String n =  member + " has been struck by lightning and died";
+                eventsHit.add(n);
+            }
+        }
+
         if (eventsHit.size() == 0) {
             eventsHit.add("No events today");
         }
