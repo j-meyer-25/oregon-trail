@@ -126,7 +126,7 @@ public class RandomEvent {
         }
 
         //If this hits it will take 10 health from the player it hits on
-        if (runProbability(25)) {
+        if (runProbability(50)) {
             if (eventsHit.size() < 3) {
                 Random temp = new Random();
                 int partyMemberInjured = temp.nextInt(party.size());
@@ -143,7 +143,7 @@ public class RandomEvent {
             }
         }
         //If this hits it will take 10 health from the player it hits on & give random disease
-        if (runProbability(10)) {
+        if (runProbability(20)) {
             if (eventsHit.size() < 3) {
                 Random temp = new Random();
                 int partyMemberSick = temp.nextInt(party.size());

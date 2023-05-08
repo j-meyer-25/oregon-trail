@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="1578dp"
         android:layout_height="1655dp"
-        android:rotation="90"
+        android:rotation="270"
         android:rotationY="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

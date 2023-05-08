@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean huntSuccessful(){
                 Random temp = new Random();
                 int probability = temp.nextInt(100) + 1;
-                return probability <= 33;
+                return probability <= 50;
             }
             @Override
             public void onClick(View view) {
@@ -154,10 +154,10 @@ public class MainActivity extends AppCompatActivity {
                     lastHunt[0] = map.getDay();
                     if(huntSuccessful()){
                         // Adds food and updates display
-                        wagon.getInventory().get(0).incrementQuantity(+50);
+                        wagon.getInventory().get(0).incrementQuantity(+100);
                         String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
                         foodBox.setText(foodMessage);
-                        String message = "Hunt successful, gained 50 food";
+                        String message = "Hunt successful, gained 100 food";
                         dialogueBox.setText(message);
                     }
                     else {
@@ -196,14 +196,16 @@ public class MainActivity extends AppCompatActivity {
                     dialogueBox.setText("");
 
                     //Sets random time to wait for the ferry 1-3 days
-                    if(Map.getLandmarks()[map.getCurrentLandmark()].split("/")[0] == "river"){
+                    //This if statement is long but the shortened one doesnt work cause it will trap the user in the wait time forever since the current landmark holds the value of the last landmark until the next one is reached, this means that it will always wait for ferry
+                    if((map.getCurrentLandmark() == 1 || map.getCurrentLandmark() == 2 || map.getCurrentLandmark() == 8 || map.getCurrentLandmark() == 11) && waitTime[0][0] == 0 && !waited[0] && (map.getMilesTraveled()==96 || map.getMilesTraveled()==168 || map.getMilesTraveled()==949 || map.getMilesTraveled()==1337)){
                         Random temp = new Random();
                         // Boolean variable waited to check if we have already waited for the current river or not
                         waitTime[0][0] = temp.nextInt(3) + 1;
                         waited[0] = true;
                     }
 
-                    if(!(map.getMilesTraveled() == 96 || map.getMilesTraveled() == 168)){
+                    //Dont change this if statement cause this is the only way I could get the river waits to work
+                    if(!(map.getMilesTraveled()==96 || map.getMilesTraveled()==168 || map.getMilesTraveled()==949 || map.getMilesTraveled()==1337)){
                         waited[0] = false;
                     }
 
