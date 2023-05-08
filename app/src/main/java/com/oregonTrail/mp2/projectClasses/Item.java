@@ -27,7 +27,7 @@ public class Item implements Cloneable {
 
     /** Getters and Setters */
     public double getPrice() { return this.price; }
-    public String toString() { return this.name + this.unit; }
+    public String toString() { return this.name + ": " + this.quantity + " " + this.unit; }
     public int getQuantity() { return this.quantity; }
 
     public void setPrice(double newPrice) { this.price = newPrice; }

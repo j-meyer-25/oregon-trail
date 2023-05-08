@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.oregonTrail.mp2.MainActivity;
+import com.oregonTrail.mp2.projectClasses.Item;
 import com.oregonTrail.mp2.projectClasses.Map;
 import com.oregonTrail.mp2.projectClasses.Member;
 import com.oregonTrail.mp2.projectClasses.Wagon;
+
+import java.util.ArrayList;
 
 public class StatsPage extends AppCompatActivity {
 
@@ -18,19 +21,15 @@ public class StatsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats_page);
 
-        TextView foodBox = (TextView) findViewById(R.id.FoodBox);
         TextView healthBox = (TextView) findViewById(R.id.healthBox);
         TextView dateBox2 = (TextView) findViewById(R.id.DateBox2);
         TextView landmarkBox2 = (TextView) findViewById(R.id.LandmarkBox2);
         TextView milesBox2 = (TextView) findViewById(R.id.milesBox2);
+        TextView inventoryBox = (TextView) findViewById(R.id.inventoryBox);
 
         Wagon wagon = MainActivity.getWagon();
         Member[] party = MainActivity.getParty();
         Map map = MainActivity.getMap();
-
-        // Food Box Update
-        String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
-        foodBox.setText(foodMessage);
 
         // Health Box Update
         String healthBoxMessage = "Health\n";
@@ -48,6 +47,12 @@ public class StatsPage extends AppCompatActivity {
         // Day Box Update
         String dayMessage = "Day: " + map.getDate();
         dateBox2.setText(dayMessage);
+
+        // Display inventory
+        ArrayList<Item> inventory = wagon.getInventory();
+        String message = "— Inventory —";
+        for (Item item : inventory) { message += "\n" + item.toString(); }
+        inventoryBox.setText(message);
 
         configureBackButton();
     }
