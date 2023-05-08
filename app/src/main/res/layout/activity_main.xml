@@ -12,8 +12,8 @@
 
     <TextView
         android:id="@+id/dialogueBox"
-        android:layout_width="797dp"
-        android:layout_height="378dp"
+        android:layout_width="798dp"
+        android:layout_height="277dp"
         android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/DateBox"
-        android:layout_width="393dp"
+        android:layout_width="404dp"
         android:layout_height="62dp"
         android:background="#597539"
         android:fontFamily="serif"
@@ -46,31 +46,11 @@
         app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.016" />
-
-    <TextView
-        android:id="@+id/healthBox"
-        android:layout_width="509dp"
-        android:layout_height="333dp"
-        android:background="#597539"
-        android:fontFamily="serif"
-        android:outlineProvider="none"
-        android:padding="5sp"
-        android:text="Health"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.981"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021" />
+        app:layout_constraintVertical_bias="0.013" />
 
     <TextView
         android:id="@+id/LandmarkBox"
-        android:layout_width="402dp"
+        android:layout_width="404dp"
         android:layout_height="57dp"
         android:background="#597539"
         android:fontFamily="serif"
@@ -84,25 +64,7 @@
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
-
-    <TextView
-        android:id="@+id/MoneyBox"
-        android:layout_width="404dp"
-        android:layout_height="61dp"
-        android:background="#597539"
-        android:fontFamily="serif"
-        android:padding="5sp"
-        android:text="Money:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintVertical_bias="0.072" />
 
     <TextView
         android:id="@+id/milesBox"
@@ -120,37 +82,21 @@
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
-
-    <TextView
-        android:id="@+id/FoodBox"
-        android:layout_width="407dp"
-        android:layout_height="61dp"
-        android:background="#597539"
-        android:fontFamily="serif"
-        android:padding="5sp"
-        android:text="Food: "
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/DateBox"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/DateBox"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintVertical_bias="0.127" />
 
     <Button
         android:id="@+id/contButton"
-        android:layout_width="226dp"
+        android:layout_width="246dp"
         android:layout_height="113dp"
+        android:backgroundTint="#ba6f18"
         android:text="Next Day"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/huntButton"
+        app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toEndOf="@+id/restButton"
         app:layout_constraintTop_toBottomOf="@+id/dialogueBox"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.111" />
 
     <Button
         android:id="@+id/huntButton"
@@ -160,61 +106,60 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913" />
+        app:layout_constraintVertical_bias="0.852" />
 
     <Button
         android:id="@+id/restButton"
-        android:layout_width="225dp"
-        android:layout_height="86dp"
+        android:layout_width="224dp"
+        android:layout_height="89dp"
         android:text="Rest Day"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91" />
+        app:layout_constraintVertical_bias="0.85" />
 
     <Button
         android:id="@+id/tradeButton"
         android:layout_width="224dp"
-        android:layout_height="86dp"
+        android:layout_height="89dp"
         android:text="Trade"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.986" />
+        app:layout_constraintVertical_bias="0.963" />
 
     <Button
         android:id="@+id/titleButton"
-        android:layout_width="454dp"
-        android:layout_height="85dp"
-        android:text="End Game/Title Screen"
+        android:layout_width="224dp"
+        android:layout_height="89dp"
+        android:text="TITLE"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.961"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.421" />
+        app:layout_constraintVertical_bias="0.963" />
 
     <Button
         android:id="@+id/statsButton"
-        android:layout_width="457dp"
-        android:layout_height="80dp"
+        android:layout_width="224dp"
+        android:layout_height="89dp"
         android:text="Stats"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344" />
+        app:layout_constraintVertical_bias="0.963" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

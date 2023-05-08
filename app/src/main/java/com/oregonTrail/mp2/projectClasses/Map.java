@@ -75,6 +75,7 @@ public class Map {
     public static void setLostDays(int days) { lostDays = days; }
     public void setMilesUntilNextLandmark(int miles){ this.milesUntilNextLandmark = miles; }
     public String getLandmarkName(int landmark) { return landmarks[landmark].split("/")[1]; }
+    public String getDate() { return this.date; }
 
     /**
      * updateDate - Methods to update the current day month and year on GUI

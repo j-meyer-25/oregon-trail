@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    private static Wagon wagon;
+    private static Member[] party;
+    public static Map map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Member member4 = new Member(7, "Ben Campbell");
         Member member5 = new Member(10, "Jake Campbell");
         // For use where we must display all 5 members no matter what
-        Member[] party = {member1, member2, member3, member4, member5};
+        party = new Member[]{member1, member2, member3, member4, member5};
         // List of members to be used for things which affect members so that you can remove the dead members from the list
         ArrayList<Member> partyList = new ArrayList<Member>();
         partyList.add(member1);
@@ -51,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         partyList.add(member3);
         partyList.add(member4);
         partyList.add(member5);
-        Map map = new Map();
-        Wagon wagon = new Wagon(800);
+        map = new Map();
+        wagon = new Wagon(800);
         wagon.setDefaultInventory();
         final int[][] waitTime = {{0}};
         final boolean[] waited = {false};
@@ -62,11 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Init the gui elements
         TextView dateBox = (TextView) findViewById(R.id.DateBox);
-        TextView foodBox = (TextView) findViewById(R.id.FoodBox);
         TextView landmarkBox = (TextView) findViewById(R.id.LandmarkBox);
         TextView milesBox = (TextView) findViewById(R.id.milesBox);
         TextView dialogueBox = (TextView) findViewById(R.id.dialogueBox);
-        TextView healthBox = (TextView) findViewById(R.id.healthBox);
+
 
         Button nextButton = (Button) findViewById(R.id.contButton);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button huntButton = (Button) findViewById(R.id.huntButton);
@@ -91,19 +93,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     map.incrementDay();
+
                     // Day Box Update
                     String dayMessage = "Day: " + map.updateDate();
                     dateBox.setText(dayMessage);
-                    // Food Box Update
-                    String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
-                    foodBox.setText(foodMessage);
-                    // Health Box Update
-                    String healthBoxMessage = "Health\n";
-                    for (Member memb : party) {
-                        healthBoxMessage += memb.getName().split(" ")[0] + ": " + memb.getHealth() + " HP\n";
-                    }
-                    healthBox.setText(healthBoxMessage);
-
                 }
             }
         });
@@ -156,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                         // Adds food and updates display
                         wagon.getInventory().get(0).incrementQuantity(+100);
                         String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
-                        foodBox.setText(foodMessage);
+                        // foodBox.setText(foodMessage);
                         String message = "Hunt successful, gained 100 food";
                         dialogueBox.setText(message);
                     }
@@ -180,15 +173,15 @@ public class MainActivity extends AppCompatActivity {
                 // Display results
                 String dayMessage = "Day: " + map.updateDate();
                 dateBox.setText(dayMessage);
-                String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
-                foodBox.setText(foodMessage);
+                // String foodMessage = "Food: " + wagon.getInventory().get(0).getQuantity() + " Pounds"; // Cannot concat inside method call
+                // foodBox.setText(foodMessage);
                 String landmarkMessage = "Next landmark: " + map.getMilesUntilNextLandmark() + " mi";
                 landmarkBox.setText(landmarkMessage);
                 String milesMessage = "Miles traveled: " + map.getMilesTraveled();
                 milesBox.setText(milesMessage);
-                String healthBoxMessage = "Health\n";
-                for (Member memb : party) { healthBoxMessage += memb.getName().split(" ")[0] + ": " + memb.getHealth() + " HP\n"; }
-                healthBox.setText(healthBoxMessage);
+                // String healthBoxMessage = "Health\n";
+                // for (Member memb : party) { healthBoxMessage += memb.getName().split(" ")[0] + ": " + memb.getHealth() + " HP\n"; }
+                // healthBox.setText(healthBoxMessage);
             }
             /** Runs through exactly one day, activating random events & depleting resources */
             public void runDay() {
@@ -324,4 +317,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public static Wagon getWagon() { return wagon; }
+    public static Member[] getParty() { return party; }
+    public static Map getMap() { return map; }
 }
