@@ -7,10 +7,23 @@
     android:background="#000000"
     tools:context=".StatsPage">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="1303dp"
+        android:layout_height="1318dp"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintBaseline_toBaselineOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/nebraska" />
+
     <TextView
         android:id="@+id/DateBox2"
-        android:layout_width="393dp"
+        android:layout_width="404dp"
         android:layout_height="62dp"
+        android:alpha=".8"
         android:background="#597539"
         android:fontFamily="serif"
         android:outlineProvider="none"
@@ -28,8 +41,9 @@
 
     <TextView
         android:id="@+id/FoodBox"
-        android:layout_width="407dp"
+        android:layout_width="404dp"
         android:layout_height="61dp"
+        android:alpha=".8"
         android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
@@ -42,12 +56,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/DateBox2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <TextView
         android:id="@+id/LandmarkBox2"
-        android:layout_width="402dp"
+        android:layout_width="404dp"
         android:layout_height="57dp"
+        android:alpha=".8"
         android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
@@ -60,12 +75,13 @@
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.134" />
 
     <TextView
         android:id="@+id/milesBox2"
         android:layout_width="404dp"
         android:layout_height="61dp"
+        android:alpha=".8"
         android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
@@ -78,12 +94,13 @@
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintVertical_bias="0.192" />
 
     <TextView
         android:id="@+id/moneyBox"
         android:layout_width="404dp"
         android:layout_height="61dp"
+        android:alpha=".8"
         android:background="#597539"
         android:fontFamily="serif"
         android:padding="5sp"
@@ -96,12 +113,13 @@
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintVertical_bias="0.252" />
 
     <TextView
         android:id="@+id/healthBox"
-        android:layout_width="509dp"
-        android:layout_height="333dp"
+        android:layout_width="465dp"
+        android:layout_height="347dp"
+        android:alpha=".8"
         android:background="#597539"
         android:fontFamily="serif"
         android:outlineProvider="none"
