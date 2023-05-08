@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.oregonTrail.mp2.MainActivity;
+
 import com.oregonTrail.mp2.projectClasses.Item;
 import com.oregonTrail.mp2.projectClasses.Map;
 import com.oregonTrail.mp2.projectClasses.Member;
@@ -21,10 +21,11 @@ public class StatsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats_page);
 
-        TextView healthBox = (TextView) findViewById(R.id.healthBox);
+        TextView healthBox = (TextView) findViewById(R.id.health);
         TextView dateBox2 = (TextView) findViewById(R.id.DateBox2);
         TextView landmarkBox2 = (TextView) findViewById(R.id.LandmarkBox2);
         TextView milesBox2 = (TextView) findViewById(R.id.milesBox2);
+        TextView moneyBox = (TextView) findViewById(R.id.moneyBox);
         TextView inventoryBox = (TextView) findViewById(R.id.inventoryBox);
 
         Wagon wagon = MainActivity.getWagon();
@@ -32,7 +33,7 @@ public class StatsPage extends AppCompatActivity {
         Map map = MainActivity.getMap();
 
         // Health Box Update
-        String healthBoxMessage = "Health\n";
+        String healthBoxMessage = "— Health —\n";
         for (Member memb : party) {
             healthBoxMessage += memb.getName().split(" ")[0] + ": " + memb.getHealth() + " HP\n";
         }
@@ -47,6 +48,10 @@ public class StatsPage extends AppCompatActivity {
         // Day Box Update
         String dayMessage = "Day: " + map.getDate();
         dateBox2.setText(dayMessage);
+
+        // Money box update
+        String moneyMessage = "Money: " + wagon.getMoney();
+        moneyBox.setText(moneyMessage);
 
         // Display inventory
         ArrayList<Item> inventory = wagon.getInventory();

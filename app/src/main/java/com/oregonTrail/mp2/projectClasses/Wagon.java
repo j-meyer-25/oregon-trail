@@ -54,10 +54,22 @@ public class Wagon {
         return milesForward;
     }
 
+    /**
+     * Gets an inventory item by its name
+     * @param name the string name of the item
+     * @return Item if it exists, null otherwise
+     */
+    public Item getInvItem(String name) {
+        for (Item item : inventory) {
+            if (item.getName().equals(name)) { return item; }
+         }
+        return null;
+    }
+
     /** Removes all items in the wagon's inventory. */
     public void clearInventory() { this.inventory.clear(); }
 
-    /** This is the temporary inventory for the MVP */
+    /** This is the temporary inventory for the MVP assuming no shops */
     public void setDefaultInventory() {
         clearInventory();
         addItem(new Item(0.17, "Food", "Pounds", 2000));

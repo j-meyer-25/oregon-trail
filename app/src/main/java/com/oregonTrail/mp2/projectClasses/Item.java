@@ -5,10 +5,10 @@
  * This class holds the information regarding items in the game. It handles holding the price of
  * each item, the name, units, and the quantity that the player has.
  */
+/** Class which holds the information regarding items in the game */
 
 package com.oregonTrail.mp2.projectClasses;
 
-/** Class which holds the information regarding items in the game */
 public class Item implements Cloneable {
 
     /** Instance Variables */
@@ -27,6 +27,7 @@ public class Item implements Cloneable {
 
     /** Getters and Setters */
     public double getPrice() { return this.price; }
+    public String getName() { return this.name; }
     public String toString() { return this.name + ": " + this.quantity + " " + this.unit; }
     public int getQuantity() { return this.quantity; }
 

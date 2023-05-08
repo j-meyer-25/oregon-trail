@@ -119,7 +119,7 @@
         app:layout_constraintVertical_bias="0.218" />
 
     <TextView
-        android:id="@+id/healthBox"
+        android:id="@+id/health"
         android:layout_width="349dp"
         android:layout_height="347dp"
         android:alpha=".8"
@@ -185,7 +185,7 @@
         android:textColor="@android:color/white"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/healthBox"
+        app:layout_constraintBottom_toTopOf="@+id/health"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
