@@ -52,6 +52,7 @@ public class Map {
 
     /** Getters & Setters */
     public int getMilesTraveled() { return milesTraveled; }
+    public void setGameWon(boolean gameWon){ this.reachedEndgameFlag = gameWon; }
     public static String[] getLandmarks() { return landmarks; }
     public int getYear(){return this.year;}
     public int getCurrentZone() { return currentZone; }

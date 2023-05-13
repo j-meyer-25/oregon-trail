@@ -251,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
                     dialogueBox.setText(message);
 
                     displayButtons();
+
                 }
             }
             @Override
@@ -261,6 +262,17 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (!map.isGameWon()) { runDay(); }
                 else {
+                    // Win message
+                    String winMessage = "Congratulations!\nYou have made it to Oregon successfully\nEnjoy your better life!";
+                    dialogueBox.setText(winMessage);
+
+                    // 0 miles until next landmark since you are there, fixes issue where at the final stop it wouldn't update variables.
+                    String landmarkMessage = "Next landmark: " + 0 + " mi";
+                    landmarkBox.setText(landmarkMessage);
+                    map.setMilesUntilNextLandmark(0);
+
+                    // Code from MVP to auto restart game once you reach the end
+                    /*
                     map.resetMap();
                     wagon.setDefaultInventory();
                     for (Member memb : party) {
@@ -270,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
                             memb.setDiedYet(false);
                         }
                     }
+                     */
                 }
             }
         });
